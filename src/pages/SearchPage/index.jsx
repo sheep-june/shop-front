@@ -85,7 +85,7 @@ const SearchPage = () => {
             const res = await axiosInstance.get("/products", {
                 params: {
                     searchTerm: term,
-                    // filters: appliedFilters,
+                    filters: appliedFilters,
                     ...appliedFilters,
                     sort,
                     skip,

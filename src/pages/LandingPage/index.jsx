@@ -52,62 +52,6 @@ const LandingPage = () => {
         }
     };
 
-    // const handleLoadMore = () => {
-    //     const body = {
-    //         skip: skip + limit,
-    //         limit,
-    //         loadMore: true,
-    //         filters,
-    //         searchTerm,
-    //     };
-    //     fetchProducts(body);
-    //     setSkip(skip + limit);
-    // };
-
-    // const handleFilters = (newFilteredData, category) => {
-    //     const newFilters = { ...filters };
-    //     newFilters[category] = newFilteredData;
-    //     if (category === "price") {
-    //         const priceValues = handlePrice(newFilteredData);
-    //         newFilters[category] = priceValues;
-    //     }
-    //     showFilteredResults(newFilters);
-    //     setFilters(newFilters);
-    // };
-
-    // const handlePrice = (value) => {
-    //     let array = [];
-    //     for (let key in prices) {
-    //         if (prices[key]._id === parseInt(value, 10)) {
-    //             array = prices[key].array;
-    //         }
-    //     }
-    //     return array;
-    // };
-
-    // const showFilteredResults = (filters) => {
-    //     const body = {
-    //         skip: 0,
-    //         limit,
-    //         filters,
-    //         searchTerm,
-    //     };
-    //     fetchProducts(body);
-    //     setSkip(0);
-    // };
-
-    // const handleSearchTerm = (event) => {
-    //     const body = {
-    //         skip: 0,
-    //         limit,
-    //         filters,
-    //         searchTerm: event.target.value,
-    //     };
-    //     setSkip(0);
-    //     setSearchTerm(event.target.value);
-    //     fetchProducts(body);
-    // };
-
     const handleQuickSearch = (e) => {
         if (e.key === "Enter" && quickSearch.trim()) {
             navigate(`/search?query=${encodeURIComponent(quickSearch.trim())}`);

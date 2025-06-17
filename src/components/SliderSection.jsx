@@ -16,6 +16,7 @@ const SliderSection = ({ title, sort }) => {
                     params: {
                         sort,
                         limit: 10,
+                        filters: {},
                     }
                 });
                 const sorted = res.data.products;
