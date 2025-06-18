@@ -73,13 +73,13 @@ const LandingPage = () => {
                     onChange={(e) => setQuickSearch(e.target.value)}
                     onKeyDown={handleQuickSearch}
                     placeholder="상품을 검색해보세요"
-                    className="w-full max-w-md border border-[#00C4C4] p-2 rounded-md 
+                    className="w-full max-w-md border border-[#00C4C4] p-2 rounded-2xl 
              focus:outline-none focus:ring-0 focus:border-2 focus:border-[#00C4C4]"
                 />
 
                 <button
                     onClick={handleClickSearch}
-                    className="px-4 py-2 bg-white text-[#00C4C4] border border-[#00C4C4] rounded 
+                    className="px-4 py-2 bg-white text-[#00C4C4] border border-[#00C4C4] rounded-2xl 
              hover:bg-[#00C4C4] hover:text-white"
                 >
                     검색
