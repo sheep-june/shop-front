@@ -70,10 +70,15 @@ const Footer = () => {
                     <h1 className="text-3xl font-serif mb-4">買う売る</h1>
                     <div className="space-y-1">
                         <p>会社名 : (株)グローバル人</p>
-                        <p>
+                        <a
+                            href="/location"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:underline"
+                        >
                             事業所所在地 : (07250) ソウル特別市 永登浦区
                             永中路56 [シンハンビル 4階]
-                        </p>
+                        </a>
                         <p>事業者登録番号 : 884-81-01032</p>
                         <p>代表者 : キム・ソンス</p>
                         <p>生涯教育施設 : グローバル人 生涯教育院 第959号</p>

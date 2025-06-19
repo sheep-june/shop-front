@@ -43,6 +43,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import AdminAdImagePage from "./pages/AdminAdImagePage/index";
+import LocationPage from "./pages/LocationPage";
 
 function Layout() {
     const location = useLocation();
@@ -115,6 +116,9 @@ function App() {
                     element={<DetailProductPage />}
                 />
 
+                {/* 지도 */}
+                <Route path="/location" element={<LocationPage />} />
+                
                 {/* FAQ 조회(사용자) */}
                 <Route path="/board/faq" element={<FAQPage />} />
 
