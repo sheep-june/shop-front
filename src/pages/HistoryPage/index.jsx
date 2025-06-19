@@ -39,7 +39,15 @@ const HistoryPage = () => {
                         <tr className="border-b" key={index}>
                             <td>{item.name}</td>
                             <td>{item.quantity}</td>
-                            <td>{item.price.toLocaleString()}원</td>
+                            {/* <td>{item.price.toLocaleString()}원</td> */}
+                            <td>
+                                {(
+                                    item.price ??
+                                    item.totalPrice ??
+                                    0
+                                ).toLocaleString()}
+                                원
+                            </td>
                             <td>
                                 {dayjs(item.dateOfPurchase).format(
                                     "YYYY-MM-DD HH:mm:ss"
