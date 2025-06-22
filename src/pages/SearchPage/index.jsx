@@ -194,7 +194,7 @@ const SearchPage = () => {
                     </div>
 
                     {/* 페이지네이션: 숫자 버튼 */}
-                    <div className="flex justify-center mt-8 space-x-2">
+                    <div className="flex justify-center mt-8 mb-[100px] space-x-2">
                         <button
                             onClick={() => changePage(1)}
                             disabled={currentPage === 1}
