@@ -21,7 +21,7 @@ const FaqItem = ({ faq, onUpdate }) => {
     const csrfToken = getCookie("XSRF-TOKEN");
 
     const handleDelete = async () => {
-        if (!window.confirm("정말 삭제하시겠습니까?")) return;
+        if (!window.confirm("本当に削除しますか")) return;
         try {
             await axios.delete(`/api/faq/${faq._id}`, {
                 withCredentials: true,
@@ -30,16 +30,16 @@ const FaqItem = ({ faq, onUpdate }) => {
                     "x-xsrf-token": csrfToken,
                 },
             });
-            toast.success("삭제 완료");
+            toast.success("削除済み");
             onUpdate();
         } catch (err) {
-            toast.error("삭제 실패");
+            toast.error("削除失敗");
         }
     };
 
     const handleUpdate = async () => {
         if (!editData.title || !editData.content) {
-            return toast.warn("제목과 내용을 모두 입력하세요.");
+            return toast.warn("タイトルと内容の両方を入力してください。");
         }
         try {
             await axios.put(`/api/faq/${faq._id}`, editData, {
@@ -49,11 +49,11 @@ const FaqItem = ({ faq, onUpdate }) => {
                     "x-xsrf-token": csrfToken,
                 },
             });
-            toast.success("수정 완료");
+            toast.success("修正完了");
             setIsEditing(false);
             onUpdate();
         } catch (err) {
-            toast.error("수정 실패");
+            toast.error("修正失敗");
         }
     };
 
@@ -95,13 +95,13 @@ const FaqItem = ({ faq, onUpdate }) => {
                                     onClick={handleUpdate}
                                     className="px-3 py-1 bg-white text-[#00C4C4] border border-[#00C4C4] rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                                 >
-                                    저장
+                                    登録
                                 </button>
                                 <button
                                     onClick={() => setIsEditing(false)}
                                     className="px-3 py-1 bg-white text-red-500 border border-red-500 rounded hover:bg-red-500 hover:text-white transition-colors duration-200"
                                 >
-                                    취소
+                                    キャンセル
                                 </button>
                             </div>
                         </>
@@ -109,7 +109,7 @@ const FaqItem = ({ faq, onUpdate }) => {
                         <>
                             <p className="whitespace-pre-line">{faq.content}</p>
                             <p className="mt-2 text-xs text-right text-gray-400">
-                                작성자: {faq.admin?.name || "관리자"} /{" "}
+                                作成者: {faq.admin?.name || "管理者"} /{" "}
                                 {new Date(faq.createdAt).toLocaleString()}
                             </p>
 
@@ -119,13 +119,13 @@ const FaqItem = ({ faq, onUpdate }) => {
                                         onClick={() => setIsEditing(true)}
                                         className="px-3 py-1 bg-white text-[#00C4C4] border border-[#00C4C4] rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                                     >
-                                        수정
+                                        修整
                                     </button>
                                     <button
                                         onClick={handleDelete}
                                         className="px-3 py-1 bg-white text-red-500 border border-red-500 rounded hover:bg-red-500 hover:text-white transition-colors duration-200"
                                     >
-                                        삭제
+                                        削除
                                     </button>
                                 </div>
                             )}

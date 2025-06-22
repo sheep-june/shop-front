@@ -23,7 +23,7 @@ const ProductCard = ({ product, refreshWishlist }) => {
 
             refreshWishlist();
         } catch (err) {
-            console.error("찜 처리 오류:", err);
+            console.error("煮込みエラー:", err);
         }
     };
 
@@ -51,7 +51,7 @@ const ProductCard = ({ product, refreshWishlist }) => {
                     to={`/product/${product._id}`}
                     className="text-blue-600 text-sm hover:underline"
                 >
-                    상세보기
+                    詳細を見る
                 </Link>
             </div>
         </li>

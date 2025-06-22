@@ -26,8 +26,8 @@ export default function AdminAdImagePage() {
             const res = await axiosInstance.get(PRODUCT_API_PATH);
             setProducts(res.data.products || []);
         } catch (err) {
-            console.error("상품 불러오기 실패:", err);
-            setErrorMsg("상품 목록을 불러오는 중 오류가 발생했습니다.");
+            console.error("商品の読み込み失敗:", err);
+            setErrorMsg("商品リストの読み込み中にエラーが発生しました。");
         }
     };
 
@@ -37,8 +37,8 @@ export default function AdminAdImagePage() {
             const res = await axiosInstance.get("/api/admin/ad-images");
             setAds(res.data);
         } catch (err) {
-            console.error("광고 불러오기 실패:", err);
-            setErrorMsg("광고 목록을 불러오는 중 오류가 발생했습니다.");
+            console.error("広告の読み込みに失敗:", err);
+            setErrorMsg("広告リストの読み込み中にエラーが発生しました。");
         }
     };
 
@@ -46,11 +46,11 @@ export default function AdminAdImagePage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!selectedProduct || !imageFile) {
-            alert("상품을 선택하고, 이미지 파일을 업로드해주세요.");
+            alert("商品を選択し、画像ファイルをアップロードしてください。");
             return;
         }
         if (ads.length >= 5) {
-            alert("광고는 최대 5개까지 등록할 수 있습니다.");
+            alert("広告は最大5つまで登録できます。");
             return;
         }
 
@@ -62,32 +62,32 @@ export default function AdminAdImagePage() {
             await axiosInstance.post("/api/admin/ad-images", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
-            alert("광고가 등록되었습니다.");
+            alert("広告が登録されました。");
             setSelectedProduct(null);
             setImageFile(null);
             setSearchTerm("");
             fetchAds();
         } catch (err) {
-            console.error("광고 등록 실패:", err);
+            console.error("広告登録失敗:", err);
             if (err.response?.status === 403) {
                 alert(
-                    "권한이 없거나 CSRF 토큰이 유효하지 않습니다. 다시 로그인해주세요."
+                    "権限がないか、CSRFトークンが無効です。 もう一度ログインしてください。"
                 );
             } else {
-                alert("광고 등록 중 오류가 발생했습니다.");
+                alert("広告の登録中にエラーが発生しました。");
             }
         }
     };
 
     // 광고 삭제
     const handleDelete = async (id) => {
-        if (!window.confirm("이 광고를 삭제하시겠습니까?")) return;
+        if (!window.confirm("この広告を削除しますか")) return;
         try {
             await axiosInstance.delete(`/api/admin/ad-images/${id}`);
             fetchAds();
         } catch (err) {
-            console.error("광고 삭제 실패:", err);
-            alert("광고 삭제 중 오류가 발생했습니다.");
+            console.error("広告削除失敗:", err);
+            alert("広告の削除中にエラーが発生しました。");
         }
     };
 
@@ -99,8 +99,8 @@ export default function AdminAdImagePage() {
             });
             fetchAds();
         } catch (err) {
-            console.error("광고 순서 변경 실패:", err);
-            alert("광고 순서 변경 중 오류가 발생했습니다.");
+            console.error("広告順序変更失敗:", err);
+            alert("広告の順番の変更中にエラーが発生しました。");
         }
     };
 
@@ -111,19 +111,19 @@ export default function AdminAdImagePage() {
 
     return (
         <div className="p-4 max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4">광고 이미지 관리</h2>
+            <h2 className="text-2xl font-bold mb-4">広告イメージ管理</h2>
 
             {errorMsg && <p className="mb-4 text-red-600">{errorMsg}</p>}
 
             {/* ─ 광고 등록 폼 ─ */}
             <form onSubmit={handleSubmit} className="space-y-4 mb-8">
                 <div>
-                    <label className="block mb-1 font-medium">상품 검색</label>
+                    <label className="block mb-1 font-medium">商品検索</label>
                     <input
                         type="text"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        placeholder="상품명을 입력하세요"
+                        placeholder="商品名を入力してください"
                         className="w-full border rounded px-3 py-2"
                     />
                 </div>
@@ -143,19 +143,19 @@ export default function AdminAdImagePage() {
                         </div>
                     ))}
                     {filteredProducts.length === 0 && (
-                        <p className="text-gray-500">검색 결과가 없습니다.</p>
+                        <p className="text-gray-500">検索結果がありません。</p>
                     )}
                 </div>
 
                 {selectedProduct && (
                     <p className="text-green-700">
-                        선택된 상품: <strong>{selectedProduct.title}</strong>
+                        選ばれた商品: <strong>{selectedProduct.title}</strong>
                     </p>
                 )}
 
                 <div>
                     <label className="block mb-1 font-medium">
-                        광고 이미지 파일
+                        広告イメージファイル
                     </label>
                     <input
                         type="file"
@@ -169,14 +169,14 @@ export default function AdminAdImagePage() {
                     type="submit"
                     className="px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700"
                 >
-                    광고 등록
+                    広告登録
                 </button>
             </form>
 
             {/* ─ 등록된 광고 목록 ─ */}
-            <h3 className="text-xl font-semibold mb-2">등록된 광고</h3>
+            <h3 className="text-xl font-semibold mb-2">登録された広告</h3>
             {ads.length === 0 ? (
-                <p className="text-gray-500">등록된 광고가 없습니다.</p>
+                <p className="text-gray-500">登録された広告がありません。</p>
             ) : (
                 <ul className="space-y-4">
                     {ads.map((ad, idx) => (
@@ -197,7 +197,7 @@ export default function AdminAdImagePage() {
                                         {ad.product?.title}
                                     </p>
                                     <p className="text-sm text-gray-600">
-                                        순서: {ad.order}
+                                        順序: {ad.order}
                                     </p>
                                 </div>
                             </div>
@@ -228,7 +228,7 @@ export default function AdminAdImagePage() {
                                     onClick={() => handleDelete(ad._id)}
                                     className="px-2 py-1 text-sm bg-red-500 text-white rounded hover:bg-red-600"
                                 >
-                                    삭제
+                                    削除
                                 </button>
                             </div>
                         </li>

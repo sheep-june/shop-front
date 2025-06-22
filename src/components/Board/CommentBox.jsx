@@ -9,7 +9,7 @@ const CommentBox = ({ questionId, onFinish, onClose }) => {
         e.preventDefault();
 
         if (!content.trim()) {
-            return toast.warn("댓글 내용을 입력해주세요.");
+            return toast.warn("コメントの内容を入力してください。");
         }
 
         try {
@@ -19,12 +19,12 @@ const CommentBox = ({ questionId, onFinish, onClose }) => {
                 content,
             });
 
-            toast.success("댓글이 등록되었습니다.");
+            toast.success("コメントが登録されました。");
             setContent("");
             if (onFinish) onFinish();
             if (onClose) onClose();
         } catch (err) {
-            toast.error("댓글 등록 실패");
+            toast.error("コメント登録失敗");
         }
     };
 
@@ -33,7 +33,7 @@ const CommentBox = ({ questionId, onFinish, onClose }) => {
             <textarea
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                placeholder="답변 내용을 입력하세요"
+                placeholder="回答内容を入力してください。"
                 className="w-full border px-3 py-2 rounded h-24 focus:outline-none focus:ring-2 focus:ring-[#00C4C4]"
             />
             <div className="flex justify-end space-x-2">
@@ -42,13 +42,13 @@ const CommentBox = ({ questionId, onFinish, onClose }) => {
                     onClick={onClose}
                     className="px-4 py-2 border border-red-500 text-red-500 text-sm bg-white rounded hover:bg-red-500 hover:text-white transition-colors duration-200"
                 >
-                    취소
+                    キャンセル
                 </button>
                 <button
                     type="submit"
                     className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] text-sm bg-white rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                 >
-                    등록
+                    登録
                 </button>
             </div>
         </form>

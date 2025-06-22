@@ -25,7 +25,7 @@ const NavItem = ({ mobile }) => {
                 navigate("/");
             }
         } catch (err) {
-            console.error("로그아웃 실패:", err);
+            console.error("ログアウト失敗:", err);
         }
     };
 
@@ -37,10 +37,10 @@ const NavItem = ({ mobile }) => {
                 } items-center justify-center`}
             >
                 <li>
-                    <Link to="/auth">로그인</Link>
+                    <Link to="/auth">ログイン</Link>
                 </li>
                 <li>
-                    <Link to="/auth?mode=register">회원가입</Link>
+                    <Link to="/auth?mode=register">会員登録</Link>
                 </li>
             </ul>
         );
@@ -58,7 +58,7 @@ const NavItem = ({ mobile }) => {
                     <span className="text-[#00C4C4] font-semibold">
                         {userData.name}
                     </span>
-                    님
+                    様
                 </li>
             )}
 
@@ -77,7 +77,7 @@ const NavItem = ({ mobile }) => {
                     to="/board"
                     className="text-sm px-4 py-2 text-[#00C4C4] hover:underline"
                 >
-                    게시판
+                    掲示板
                 </Link>
             </li>
 
@@ -94,22 +94,22 @@ const NavItem = ({ mobile }) => {
                     // <ul className="absolute top-full right-0 z-20 w-40 py-2 bg-white border rounded shadow-lg text-black text-sm">
                     <ul className="absolute top-full left-1/2 -translate-x-1/2 z-20 w-40 py-2 bg-white border rounded shadow-lg text-black text-sm">
                         <li className="px-4 py-2 hover:bg-gray-100">
-                            <Link to="/history">주문 내역</Link>
+                            <Link to="/history">注文内訳</Link>
                         </li>
                         <li className="px-4 py-2 hover:bg-gray-100">
-                            <Link to="/product/upload">업로드</Link>
+                            <Link to="/product/upload">アップロード</Link>
                         </li>
                         <li className="px-4 py-2 hover:bg-gray-100">
-                            <Link to="/user/myproducts">내가 올린 상품</Link>
+                            <Link to="/user/myproducts">あげた商品</Link>
                         </li>
                         <li className="px-4 py-2 hover:bg-gray-100">
-                            <Link to="/user/wishlist">찜 목록</Link>
+                            <Link to="/user/wishlist">お気に入りリスト</Link>
                         </li>
                         <li
                             className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                             onClick={handleLogout}
                         >
-                            로그아웃
+                            ログアウト
                         </li>
                     </ul>
                 )}
