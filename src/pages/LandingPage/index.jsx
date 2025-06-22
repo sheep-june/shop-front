@@ -88,7 +88,11 @@ const LandingPage = () => {
             {/* <AdSlider /> */}
             {/* <AdVideoSlider/> */}
             {/* <NewAdVideoSlider /> */}
-            <AdImageSlider />
+            <div className="w-screen relative left-1/2 right-1/2 -translate-x-1/2">
+                <AdImageSlider />
+            </div>
+
+            {/* <AdImageSlider /> */}
 
             <SliderSection
                 title="지금 가장 많이 팔린 베스트셀러!"

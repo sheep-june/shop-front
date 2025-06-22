@@ -54,9 +54,13 @@ const CardItem = ({ product, refreshWishlist, wishlist }) => {
     };
 
     return (
+        // <Link
+        //     to={`/product/${product._id}`}
+        //     className="block relative bg-white border-2 border-[#a0f0f0] rounded-md overflow-hidden w-full max-w-[230px] mx-auto hover:border-[#00C4C4] transition-colors duration-200"
+        // >
         <Link
             to={`/product/${product._id}`}
-            className="block relative bg-white border-2 border-[#a0f0f0] rounded-md overflow-hidden w-full max-w-[230px] mx-auto hover:border-[#00C4C4] transition-colors duration-200"
+            className="block relative bg-white border-2 border-[#a0f0f0] rounded-md overflow-hidden w-full max-w-[280px] h-[350px] mx-auto hover:border-[#00C4C4] transition-colors duration-200"
         >
             <div className="w-full h-[180px]">
                 <ImageSlider

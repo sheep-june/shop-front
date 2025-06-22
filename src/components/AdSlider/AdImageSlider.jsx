@@ -26,7 +26,8 @@ export default function AdImageSlider() {
     if (ads.length === 0) return null;
 
     return (
-        <div className="w-full aspect-[16/9] overflow-hidden">
+        // <div className="w-full aspect-[16/9] overflow-hidden">
+        <div className="w-full max-w-screen overflow-hidden h-[500px]">
             <Swiper
                 modules={[Autoplay, Navigation, Pagination]}
                 navigation={true}
@@ -43,8 +44,6 @@ export default function AdImageSlider() {
                 {ads.map((ad) => (
                     <SwiperSlide key={ad._id}>
                         <img
-                            // src={`http://localhost:4000/${ad.image}`}
-                            
                             src={`${import.meta.env.VITE_SERVER_URL}/${ad.image}`}
                             alt={ad.product?.title}
                             className="w-full h-full object-cover cursor-pointer"

@@ -182,7 +182,8 @@ const SearchPage = () => {
                             </button>
                         ))}
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                    {/* <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3"> */}
+                    <div className="grid grid-cols-6 gap-x-2 gap-y-6 px-2">
                         {products.map((product) => (
                             <CardItem
                                 key={product._id}
@@ -191,6 +192,7 @@ const SearchPage = () => {
                             />
                         ))}
                     </div>
+
                     {/* 페이지네이션: 숫자 버튼 */}
                     <div className="flex justify-center mt-8 space-x-2">
                         <button
