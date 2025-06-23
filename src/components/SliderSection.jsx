@@ -22,7 +22,7 @@ const SliderSection = ({ title, sort }) => {
                 const sorted = res.data.products;
                 setProducts(sorted);
             } catch (err) {
-                console.error(`${title} 슬라이드 로딩 실패:`, err);
+                console.error(`${title} スライドローディング失敗:`, err);
             }
         };
         fetchSortedProducts();

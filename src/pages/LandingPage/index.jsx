@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import SliderSection from "../../components/SliderSection";
 import usePageTitle from "../../hooks/usePageTitle";
 import AdImageSlider from "../../components/AdSlider/AdImageSlider";
+import CardSection from "../../components/CardSection";
 
 const LandingPage = () => {
     const navigate = useNavigate();
@@ -94,7 +95,7 @@ const LandingPage = () => {
 
             {/* <AdImageSlider /> */}
 
-            <SliderSection
+            {/* <SliderSection
                 title="지금 가장 많이 팔린 베스트셀러!"
                 sort="sold"
             />
@@ -104,6 +105,21 @@ const LandingPage = () => {
             />
             <SliderSection
                 title="가장 후기가 좋은 상품은 여기!"
+                sort="rating"
+            /> */}
+            <CardSection
+                title1="가장 많이 팔림"
+                title2="빨리 너도 돈 써"
+                sort="sold"
+            />
+            <CardSection
+                title1="가장 많이 봄"
+                title2="빨리 너도 돈 써"
+                sort="views"
+            />
+            <CardSection
+                title1="가장 많이 좋아함"
+                title2="빨리 너도 돈 써"
                 sort="rating"
             />
         </section>

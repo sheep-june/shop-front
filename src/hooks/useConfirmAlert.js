@@ -4,8 +4,8 @@ export const useConfirmAlert = () => {
     const confirm = async ({
         title,
         text,
-        confirmText = "확인",
-        cancelText = "취소",
+        confirmText = "確認",
+        cancelText = "キャンセル",
     }) => {
         const result = await Swal.fire({
             title,
