@@ -142,23 +142,15 @@ const Footer = () => {
 
                     <div className="flex gap-4 mt-6 text-2xl text-gray-700">
                         <a
-                            href="https://www.instagram.com/sheepjun/"
+                            href="https://github.com/sheep-june/shop-back"
                             target="_blank"
                             rel="noreferrer"
-                            className="hover:text-[#C13584]"
+                            className="hover:text-black"
                         >
-                            <FaInstagram />
+                            <FaGithub />
                         </a>
                         <a
-                            href="https://www.facebook.com/sheep.june"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="hover:text-[#3b5998]"
-                        >
-                            <FaFacebookF />
-                        </a>
-                        <a
-                            href="https://github.com/sheep-june"
+                            href="https://github.com/sheep-june/shop-front"
                             target="_blank"
                             rel="noreferrer"
                             className="hover:text-black"
