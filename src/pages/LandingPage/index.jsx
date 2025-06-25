@@ -107,7 +107,7 @@ const LandingPage = () => {
                 title="가장 후기가 좋은 상품은 여기!"
                 sort="rating"
             /> */}
-            <CardSection
+            {/* <CardSection
                 title1="가장 많이 팔림"
                 title2="빨리 너도 돈 써"
                 sort="sold"
@@ -121,7 +121,25 @@ const LandingPage = () => {
                 title1="가장 많이 좋아함"
                 title2="빨리 너도 돈 써"
                 sort="rating"
-            />
+            /> */}
+            {/* <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8"> */}
+            <div className="max-w-screen-lg mx-auto px-2 sm:px-4 lg:px-6">
+                <CardSection
+                    title1="가장 많이 팔림"
+                    title2="빨리 너도 돈 써"
+                    sort="sold"
+                />
+                <CardSection
+                    title1="가장 많이 봄"
+                    title2="빨리 너도 돈 써"
+                    sort="views"
+                />
+                <CardSection
+                    title1="가장 많이 좋아함"
+                    title2="빨리 너도 돈 써"
+                    sort="rating"
+                />
+            </div>
         </section>
     );
 };

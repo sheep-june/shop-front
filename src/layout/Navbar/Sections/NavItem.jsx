@@ -6,6 +6,7 @@ import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import { setCsrfToken } from "../../../utils/axios";
 import { isProtectedPath } from "../../../utils/protectedPaths";
 
+
 const NavItem = ({ mobile }) => {
     const isAuth = useSelector((state) => state.user?.isAuth);
     const userData = useSelector((state) => state.user?.userData);
