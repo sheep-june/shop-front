@@ -125,18 +125,18 @@ const LandingPage = () => {
             {/* <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8"> */}
             <div className="max-w-screen-lg mx-auto px-2 sm:px-4 lg:px-6">
                 <CardSection
-                    title1="가장 많이 팔림"
-                    title2="빨리 너도 돈 써"
+                    title1="Bestseller"
+                    title2="ベストセラー"
                     sort="sold"
                 />
                 <CardSection
-                    title1="가장 많이 봄"
-                    title2="빨리 너도 돈 써"
+                    title1="Most Viewed"
+                    title2="注目商品"
                     sort="views"
                 />
                 <CardSection
-                    title1="가장 많이 좋아함"
-                    title2="빨리 너도 돈 써"
+                    title1="Top Rated"
+                    title2="口コミで人気"
                     sort="rating"
                 />
             </div>
