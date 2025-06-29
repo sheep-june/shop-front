@@ -50,7 +50,7 @@ const ProductInfo = ({ product }) => {
             <ul>
                 <li>
                     <span className="font-semibold text-gray-900">가격:</span>{" "}
-                    {product.price} 원
+                    {product.price.toLocaleString()} 원
                 </li>
                 <li>
                     <span className="font-semibold text-gray-900">

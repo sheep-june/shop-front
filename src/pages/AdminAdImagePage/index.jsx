@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance, { setCsrfToken } from "../../utils/axios";
 import { toast } from "react-toastify";
+import { useConfirmAlert } from "../../hooks/useConfirmAlert";
 
 const PRODUCT_API_PATH = "/products";
 
@@ -11,6 +12,9 @@ export default function AdminAdImagePage() {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [imageFile, setImageFile] = useState(null);
     const [errorMsg, setErrorMsg] = useState("");
+
+
+const { confirm } = useConfirmAlert();
 
     // ① 페이지 로드 시: CSRF → 상품 목록 → 광고 목록
     useEffect(() => {
@@ -81,16 +85,35 @@ export default function AdminAdImagePage() {
     };
 
     // 광고 삭제
-    const handleDelete = async (id) => {
-        if (!window.confirm("この広告を削除しますか")) return;
-        try {
-            await axiosInstance.delete(`/api/admin/ad-images/${id}`);
-            fetchAds();
-        } catch (err) {
-            toast.error("広告削除失敗:", err);
-            alert("広告の削除中にエラーが発生しました。");
-        }
-    };
+    // const handleDelete = async (id) => {
+    //     if (!window.confirm("この広告を削除しますか")) return;
+    //     try {
+    //         await axiosInstance.delete(`/api/admin/ad-images/${id}`);
+    //         fetchAds();
+    //     } catch (err) {
+    //         toast.error("広告削除失敗:", err);
+    //         alert("広告の削除中にエラーが発生しました。");
+    //     }
+    // };
+
+const handleDelete = async (id) => {
+    const isConfirmed = await confirm({
+        title: "広告削除",
+        text: "この広告を削除しますか？",
+        confirmText: "削除",
+        cancelText: "キャンセル",
+    });
+
+    if (!isConfirmed) return;
+
+    try {
+        await axiosInstance.delete(`/api/admin/ad-images/${id}`);
+        fetchAds();
+        toast.success("広告を削除しました。");
+    } catch (err) {
+        toast.error("広告の削除に失敗しました。");
+    }
+};
 
     // 광고 순서 변경 (up / down)
     const moveAd = async (id, direction) => {

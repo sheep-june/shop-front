@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../utils/axios";
 import { toast } from "react-toastify";
+import { useConfirmAlert } from "../../hooks/useConfirmAlert";
 
 const AdminAdSection = () => {
     const [products, setProducts] = useState([]);
@@ -8,6 +9,8 @@ const AdminAdSection = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [videoFile, setVideoFile] = useState(null);
     const [ads, setAds] = useState([]);
+
+    const { confirm } = useConfirmAlert();
 
     useEffect(() => {
         fetchProducts();
@@ -62,16 +65,34 @@ const AdminAdSection = () => {
         }
     };
 
-    const handleDelete = async (id) => {
-        if (!window.confirm("이 광고를 삭제하시겠습니까?")) return;
+    // const handleDelete = async (id) => {
+    //     if (!window.confirm("이 광고를 삭제하시겠습니까?")) return;
 
-        try {
-            await axiosInstance.delete(`/api/admin/ads/${id}`);
-            fetchAds();
-        } catch (err) {
-            toast.error("광고 삭제 실패:", err);
-        }
-    };
+    //     try {
+    //         await axiosInstance.delete(`/api/admin/ads/${id}`);
+    //         fetchAds();
+    //     } catch (err) {
+    //         toast.error("광고 삭제 실패:", err);
+    //     }
+    // };
+    const handleDelete = async (id) => {
+    const isConfirmed = await confirm({
+        title: "광고 삭제",
+        text: "이 광고를 삭제하시겠습니까?",
+        confirmText: "삭제",
+        cancelText: "취소",
+    });
+
+    if (!isConfirmed) return;
+
+    try {
+        await axiosInstance.delete(`/api/admin/ads/${id}`);
+        fetchAds();
+        toast.success("광고 삭제 완료");
+    } catch (err) {
+        toast.error("광고 삭제 실패");
+    }
+};
 
     const moveAd = async (fromIndex, toIndex) => {
         if (toIndex < 0 || toIndex >= ads.length) return;
@@ -171,7 +192,8 @@ const AdminAdSection = () => {
                                 // src={`http://localhost:4000/uploads/ads/${ad.video}`}
                                 src={`${
                                     import.meta.env.VITE_SERVER_URL
-                                }/uploads/ads/${ad.video}`}
+                                }/upimport { useConfirmAlert } from '../../hooks/useConfirmAlert';
+loads/ads/${ad.video}`}
                                 width="200"
                                 controls
                                 muted
