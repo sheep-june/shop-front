@@ -1,4 +1,4 @@
-# Shopping Mall – フロントエンド（React + Vite + Tailwind CSS）
+# Shopping Mall – オンラインショッピングサイト フロントエンド（React + Vite + Tailwind CSS）
 
 ## 概要  
 本リポジトリは、React (Vite) と Tailwind CSS をベースに構築されたショッピングサイトのフロントエンドです。  
@@ -24,8 +24,6 @@
 - **axios**（withCredentials、CSRF トークン自動送信、JWT ヘッダー）  
 - **dayjs**, **qs**
 
-## 注意事項  
-- すべての API リクエストには `Authorization: Bearer <token>` ヘッダーを付与してください。  
+## 注意事項 
 - CSRF トークンは axios インスタンスが自動的に `x-xsrf-token` ヘッダーに設定します。  
-- `.env`（`VITE_SERVER_URL`）はバックエンド API URL を指定し、Git 管理対象外にしてください。  
-- レビュー投稿はバックエンド側で「購入済みユーザーのみ許可」となっています。  
+
