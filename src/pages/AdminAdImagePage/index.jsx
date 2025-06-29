@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance, { setCsrfToken } from "../../utils/axios";
+import { toast } from "react-toastify";
 
 const PRODUCT_API_PATH = "/products";
 
@@ -26,7 +27,7 @@ export default function AdminAdImagePage() {
             const res = await axiosInstance.get(PRODUCT_API_PATH);
             setProducts(res.data.products || []);
         } catch (err) {
-            console.error("商品の読み込み失敗:", err);
+            toast.error("商品の読み込み失敗:", err);
             setErrorMsg("商品リストの読み込み中にエラーが発生しました。");
         }
     };
@@ -37,7 +38,7 @@ export default function AdminAdImagePage() {
             const res = await axiosInstance.get("/api/admin/ad-images");
             setAds(res.data);
         } catch (err) {
-            console.error("広告の読み込みに失敗:", err);
+            toast.error("広告の読み込みに失敗:", err);
             setErrorMsg("広告リストの読み込み中にエラーが発生しました。");
         }
     };
@@ -68,7 +69,7 @@ export default function AdminAdImagePage() {
             setSearchTerm("");
             fetchAds();
         } catch (err) {
-            console.error("広告登録失敗:", err);
+            toast.error("広告登録失敗:", err);
             if (err.response?.status === 403) {
                 alert(
                     "権限がないか、CSRFトークンが無効です。 もう一度ログインしてください。"
@@ -86,7 +87,7 @@ export default function AdminAdImagePage() {
             await axiosInstance.delete(`/api/admin/ad-images/${id}`);
             fetchAds();
         } catch (err) {
-            console.error("広告削除失敗:", err);
+            toast.error("広告削除失敗:", err);
             alert("広告の削除中にエラーが発生しました。");
         }
     };
@@ -99,7 +100,7 @@ export default function AdminAdImagePage() {
             });
             fetchAds();
         } catch (err) {
-            console.error("広告順序変更失敗:", err);
+            toast.error("広告順序変更失敗:", err);
             alert("広告の順番の変更中にエラーが発生しました。");
         }
     };

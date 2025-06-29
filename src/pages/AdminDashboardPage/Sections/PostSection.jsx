@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../utils/axios";
+import { toast } from "react-toastify";
+import { useConfirmAlert } from "../../../hooks/useConfirmAlert";
 
 const POSTS_PER_PAGE = 10;
 
@@ -8,6 +10,7 @@ const PostSection = () => {
     const [search, setSearch] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const token = localStorage.getItem("adminToken");
+    const { confirm } = useConfirmAlert();
 
     const fetchPosts = async () => {
         try {
@@ -16,21 +19,41 @@ const PostSection = () => {
             });
             setPosts(res.data);
         } catch (err) {
-            console.error("게시글 불러오기 실패", err);
+            toast.error("게시글 불러오기 실패", err);
         }
     };
 
-    const handleDeletePost = async (id) => {
-        if (!window.confirm("정말로 이 게시글을 삭제하시겠습니까?")) return;
-        try {
-            await axios.delete(`/api/admin/posts/${id}`, {
-                headers: { Authorization: `Bearer ${token}` },
-            });
-            fetchPosts();
-        } catch (err) {
-            console.error("게시글 삭제 실패", err);
-        }
-    };
+    // const handleDeletePost = async (id) => {
+    //     if (!window.confirm("정말로 이 게시글을 삭제하시겠습니까?")) return;
+    //     try {
+    //         await axios.delete(`/api/admin/posts/${id}`, {
+    //             headers: { Authorization: `Bearer ${token}` },
+    //         });
+    //         fetchPosts();
+    //     } catch (err) {
+    //         toast.error("게시글 삭제 실패", err);
+    //     }
+    // };
+
+const handleDeletePost = async (id) => {
+    const isConfirmed = await confirm({
+        title: "投稿削除",
+        text: "本当にこの投稿を削除しますか？",
+        confirmText: "削除",
+        cancelText: "キャンセル",
+    });
+
+    if (!isConfirmed) return;
+
+    try {
+        await axios.delete(`/api/admin/posts/${id}`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+        fetchPosts();
+    } catch (err) {
+        toast.error("게시글 삭제 실패");
+    }
+};
 
     useEffect(() => {
         fetchPosts();

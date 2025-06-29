@@ -1,6 +1,7 @@
 import React from "react";
 import Dropzone from "react-dropzone";
 import axiosInstance, { setCsrfToken } from "../utils/axios";
+import { toast } from "react-toastify";
 
 const FileUpload = ({ onImageChange, images }) => {
     const handleDrop = async (files) => {
@@ -22,7 +23,7 @@ const FileUpload = ({ onImageChange, images }) => {
 
             onImageChange([...images, response.data.fileName]);
         } catch (error) {
-            console.error(error);
+            toast.error(error);
         }
     };
 

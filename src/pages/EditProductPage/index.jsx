@@ -29,7 +29,7 @@ const EditProductPage = () => {
                 );
                 setProduct(res.data[0]);
             } catch (err) {
-                console.error("상품 정보 불러오기 실패:", err);
+                toast.error("상품 정보 불러오기 실패:", err);
             }
         };
         fetchProduct();

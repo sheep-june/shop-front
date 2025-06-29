@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../utils/axios";
+import { toast } from "react-toastify";
 
 const AdminAdSection = () => {
     const [products, setProducts] = useState([]);
@@ -18,7 +19,7 @@ const AdminAdSection = () => {
             const res = await axiosInstance.get("/products");
             setProducts(res.data.products);
         } catch (err) {
-            console.error("상품 불러오기 실패:", err);
+            toast.error("상품 불러오기 실패:", err);
         }
     };
 
@@ -27,7 +28,7 @@ const AdminAdSection = () => {
             const res = await axiosInstance.get("/api/admin/ads");
             setAds(res.data);
         } catch (err) {
-            console.error("광고 불러오기 실패:", err);
+            toast.error("광고 불러오기 실패:", err);
         }
     };
 
@@ -56,7 +57,7 @@ const AdminAdSection = () => {
             setSearchTerm("");
             fetchAds();
         } catch (err) {
-            console.error("광고 등록 실패:", err);
+            toast.error("광고 등록 실패:", err);
             alert("광고 등록 중 오류 발생");
         }
     };
@@ -68,7 +69,7 @@ const AdminAdSection = () => {
             await axiosInstance.delete(`/api/admin/ads/${id}`);
             fetchAds();
         } catch (err) {
-            console.error("광고 삭제 실패:", err);
+            toast.error("광고 삭제 실패:", err);
         }
     };
 
@@ -89,7 +90,7 @@ const AdminAdSection = () => {
 
             setAds(reordered);
         } catch (err) {
-            console.error("순서 변경 실패:", err);
+            toast.error("순서 변경 실패:", err);
             alert("광고 순서 변경에 실패했습니다.");
         }
     };

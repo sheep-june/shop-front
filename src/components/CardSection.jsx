@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../utils/axios";
 import CardItem2 from "../pages/LandingPage/Sections/CardItem2";
+import { toast } from 'react-toastify';
 
 const CardSection = ({
     title1,
@@ -19,7 +20,7 @@ const CardSection = ({
                 });
                 setProducts(Array.isArray(data.products) ? data.products : []);
             } catch (err) {
-                console.error("CardSection 상품 불러오기 실패:", err);
+                toast.error("CardSection 상품 불러오기 실패:", err);
             }
         };
 

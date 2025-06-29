@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import axiosInstance from "../../utils/axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AdVideoSlider = () => {
     const [ads, setAds] = useState([]);
@@ -15,7 +16,7 @@ const AdVideoSlider = () => {
                 const res = await axiosInstance.get("/api/admin/ads");
                 setAds(res.data);
             } catch (err) {
-                console.error("広告の読み込みに失敗:", err);
+                toast.error("広告の読み込みに失敗:", err);
             }
         };
         fetchAds();

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import axiosInstance from "../utils/axios";
 import CardItem from "../pages/LandingPage/Sections/CardItem";
+import { toast } from "react-toastify";
 
 const SliderSection = ({ title, sort }) => {
     const [products, setProducts] = useState([]);
@@ -22,7 +23,7 @@ const SliderSection = ({ title, sort }) => {
                 const sorted = res.data.products;
                 setProducts(sorted);
             } catch (err) {
-                console.error(`${title} スライドローディング失敗:`, err);
+                toast.error(`${title} スライドローディング失敗:`, err);
             }
         };
         fetchSortedProducts();

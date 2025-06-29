@@ -5,6 +5,7 @@ import { logoutUser } from "../../../store/thunkFunctions";
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import { setCsrfToken } from "../../../utils/axios";
 import { isProtectedPath } from "../../../utils/protectedPaths";
+import { toast } from "react-toastify";
 
 
 const NavItem = ({ mobile }) => {
@@ -26,7 +27,7 @@ const NavItem = ({ mobile }) => {
                 navigate("/");
             }
         } catch (err) {
-            console.error("ログアウト失敗:", err);
+            toast.error("ログアウト失敗:", err);
         }
     };
 

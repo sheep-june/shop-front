@@ -6,6 +6,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
+import { toast } from "react-toastify";
 
 export default function AdImageSlider() {
     const [ads, setAds] = useState([]);
@@ -17,7 +18,7 @@ export default function AdImageSlider() {
                 const res = await axiosInstance.get("/api/admin/ad-images");
                 setAds(res.data);
             } catch (err) {
-                console.error("広告の読み込みに失敗:", err);
+                toast.error("広告の読み込みに失敗:", err);
             }
         };
         fetchAds();

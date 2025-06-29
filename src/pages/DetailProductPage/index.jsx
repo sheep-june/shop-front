@@ -35,7 +35,7 @@ const DetailProductPage = () => {
                 setReviews(reviewRes.data.reviews);
                 setAverageRating(reviewRes.data.averageRating);
             } catch (error) {
-                console.error(error);
+                toast.error(error);
             }
         }
         fetchProduct();
@@ -75,7 +75,7 @@ const DetailProductPage = () => {
             setReviews(reviewRes.data.reviews);
             setAverageRating(reviewRes.data.averageRating);
         } catch (error) {
-            console.error("리뷰 등록 오류:", error);
+            toast.error("리뷰 등록 오류:", error);
             toast.error("리뷰 등록에 실패했습니다.");
         }
     };

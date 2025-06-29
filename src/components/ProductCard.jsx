@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import axiosInstance from "../utils/axios";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ product, refreshWishlist }) => {
     const user = useSelector((state) => state.user);
@@ -23,7 +24,7 @@ const ProductCard = ({ product, refreshWishlist }) => {
 
             refreshWishlist();
         } catch (err) {
-            console.error("煮込みエラー:", err);
+            toast.error("煮込みエラー:", err);
         }
     };
 

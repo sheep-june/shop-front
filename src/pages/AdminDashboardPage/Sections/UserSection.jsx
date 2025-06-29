@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../../utils/axios";
+import { toast } from "react-toastify";
+import { useConfirmAlert } from '../../../hooks/useConfirmAlert';
 
 const USERS_PER_PAGE = 10;
 
@@ -8,6 +10,7 @@ const UserSection = () => {
     const [search, setSearch] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const token = localStorage.getItem("adminToken");
+    const { confirm } = useConfirmAlert();
 
     const fetchUsers = async () => {
         try {
@@ -16,21 +19,40 @@ const UserSection = () => {
             });
             setUsers(res.data);
         } catch (err) {
-            console.error("유저 불러오기 실패", err);
+            toast.error("유저 불러오기 실패", err);
         }
     };
 
+    // const handleDeleteUser = async (id) => {
+    //     if (!window.confirm("정말로 이 유저를 삭제하시겠습니까?")) return;
+    //     try {
+    //         await axios.delete(`/api/admin/users/${id}`, {
+    //             headers: { Authorization: `Bearer ${token}` },
+    //         });
+    //         fetchUsers();
+    //     } catch (err) {
+    //         toast.error("유저 삭제 실패", err);
+    //     }
+    // };
     const handleDeleteUser = async (id) => {
-        if (!window.confirm("정말로 이 유저를 삭제하시겠습니까?")) return;
-        try {
-            await axios.delete(`/api/admin/users/${id}`, {
-                headers: { Authorization: `Bearer ${token}` },
-            });
-            fetchUsers();
-        } catch (err) {
-            console.error("유저 삭제 실패", err);
-        }
-    };
+    const isConfirmed = await confirm({
+        title: "ユーザー削除",
+        text: "本当にこのユーザーを削除しますか？",
+        confirmText: "削除",
+        cancelText: "キャンセル",
+    });
+
+    if (!isConfirmed) return;
+
+    try {
+        await axios.delete(`/api/admin/users/${id}`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+        fetchUsers();
+    } catch (err) {
+        toast.error("유저 삭제 실패");
+    }
+};
 
     useEffect(() => {
         fetchUsers();

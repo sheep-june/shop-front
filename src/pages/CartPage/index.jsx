@@ -66,7 +66,7 @@ const CartPage = () => {
             dispatch(fetchUserCart());
             setSelected([]);
         } catch (err) {
-            console.error("결제 실패:", err);
+            toast.error("결제 실패:", err);
             toast.error("결제 중 오류 발생");
         }
     };
@@ -90,7 +90,7 @@ const CartPage = () => {
             dispatch(fetchUserCart());
             setSelected([]);
         } catch (err) {
-            console.error("삭제 실패:", err);
+            toast.error("삭제 실패:", err);
             toast.error("삭제 중 오류 발생");
         }
     };
