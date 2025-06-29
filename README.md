@@ -1,4 +1,4 @@
-# Shopping Mall – オンラインショッピングサイト フロントエンド（React + Vite + Tailwind CSS）
+# Kauuru - フロントエンド（React + Vite + Tailwind CSS）
 
 ## 概要  
 本リポジトリは、React (Vite) と Tailwind CSS をベースに構築されたショッピングサイトのフロントエンドです。  
