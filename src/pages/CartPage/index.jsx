@@ -424,7 +424,7 @@ const CartPage = () => {
                         </div>
                     </div>
 
-                    {/* 추천 기능 아래에만 추가 */}
+                    {/* 추천 기능 아래에만 추가
                     <div className="mt-10">
                         <button
                             onClick={toggleRec}
@@ -482,7 +482,68 @@ const CartPage = () => {
                                 )}
                             </div>
                         )}
-                    </div>
+                    </div> */}
+                    {/* 추천 기능 아래에만 추가 */}
+<div className="mt-10">
+    <button
+        onClick={toggleRec}
+        className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] font-semibold rounded-md hover:bg-[#00C4C4] hover:text-white transition duration-200 w-fit"
+    >
+        예산이 부족하시다구요?
+    </button>
+
+    {showRec && (
+        <div className="mt-4 border border-[#00C4C4] bg-white p-6 rounded-xl shadow-md">
+            <input
+                type="number"
+                placeholder="예산 입력 (원)"
+                value={budget}
+                onChange={(e) => setBudget(e.target.value)}
+                className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00C4C4] transition duration-150"
+            />
+
+            <button
+                className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] font-semibold rounded-md hover:bg-[#00C4C4] hover:text-white transition duration-200 w-fit"
+                onClick={handleRecommend}
+            >
+                추천받기
+            </button>
+
+            {recError && (
+                <p className="text-red-500 text-sm font-medium mt-2">{recError}</p>
+            )}
+
+            {recommended.length > 0 && (
+                <div className="mt-5">
+                    <ul className="list-disc list-inside text-gray-800 mb-4 space-y-1">
+                        {recommended.map((item) => (
+                            <li key={item._id}>
+                                <span className="font-semibold">{item.title}</span> —{" "}
+                                {item.price.toLocaleString()}원
+                            </li>
+                        ))}
+                    </ul>
+
+                    <p className="font-bold text-right text-lg text-gray-700 mb-4">
+                        총합:{" "}
+                        {recommended.reduce((sum, i) => sum + i.price, 0).toLocaleString()}원
+                    </p>
+
+                    <button
+                        className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] font-semibold rounded-md hover:bg-[#00C4C4] hover:text-white transition duration-200 w-fit"
+                        onClick={handlePurchase}
+                    >
+                        추천 상품 결제 및 삭제
+                    </button>
+                </div>
+            )}
+        </div>
+    )}
+</div>
+
+
+
+
                 </>
             )}
         </section>
