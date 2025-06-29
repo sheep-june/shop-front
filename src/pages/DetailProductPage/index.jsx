@@ -74,10 +74,21 @@ const DetailProductPage = () => {
             );
             setReviews(reviewRes.data.reviews);
             setAverageRating(reviewRes.data.averageRating);
-        } catch (error) {
-            toast.error("리뷰 등록 오류:", error);
-            toast.error("리뷰 등록에 실패했습니다.");
-        }
+        } 
+        // catch (error) {
+        //     toast.error("리뷰 등록 오류:", error);
+        //     toast.error("리뷰 등록에 실패했습니다.");
+        // }
+        catch (error) {
+    Swal.fire({
+    title: "리뷰 작성 불가",
+    text: "구매하신 상품에만 리뷰를 작성할 수 있습니다.",
+    icon: "error",
+    confirmButtonText: "확인",
+    confirmButtonColor: "#3085d6",
+    showCancelButton: false,
+});
+}
     };
 
     if (!product) return null;
