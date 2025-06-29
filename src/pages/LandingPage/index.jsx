@@ -135,7 +135,7 @@ const LandingPage = () => {
                     sort="views"
                 />
                 <CardSection
-                    title1="Top Rated test"
+                    title1="Top Rated"
                     title2="口コミで人気"
                     sort="rating"
                 />

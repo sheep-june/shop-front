@@ -74,21 +74,24 @@ const DetailProductPage = () => {
             );
             setReviews(reviewRes.data.reviews);
             setAverageRating(reviewRes.data.averageRating);
-        } 
-        // catch (error) {
-        //     toast.error("리뷰 등록 오류:", error);
-        //     toast.error("리뷰 등록에 실패했습니다.");
-        // }
-        catch (error) {
-    Swal.fire({
-    title: "리뷰 작성 불가",
-    text: "구매하신 상품에만 리뷰를 작성할 수 있습니다.",
-    icon: "error",
-    confirmButtonText: "확인",
-    confirmButtonColor: "#3085d6",
-    showCancelButton: false,
-});
-}
+        } catch (error) {
+            // catch (error) {
+            //     toast.error("리뷰 등록 오류:", error);
+            //     toast.error("리뷰 등록에 실패했습니다.");
+            // }
+            Swal.fire({
+                title: "리뷰 작성 불가",
+                text: "구매하신 상품에만 리뷰를 작성할 수 있습니다.",
+                icon: "error",
+                confirmButtonText: "확인",
+                showCancelButton: false,
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton:
+                        "border-2 border-[#00C4C4] text-[#00C4C4] bg-white hover:bg-[#00C4C4] hover:text-white rounded px-5 py-2 transition font-medium",
+                },
+            });
+        }
     };
 
     if (!product) return null;
