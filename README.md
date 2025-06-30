@@ -27,6 +27,8 @@
 - 通知（react-toastify）  
 - 日付操作（dayjs）／クエリ操作（qs）
 
+## フロントエンドのデプロイ
+- Vercel を使用し、`main` ブランチに push すると自動的に再デプロイされます。
 
 ## 使用技術スタック  
 - **React** (Vite)  
