@@ -19,7 +19,15 @@ const AdminAdSection = () => {
 
     const fetchProducts = async () => {
         try {
-            const res = await axiosInstance.get("/products");
+            // const res = await axiosInstance.get("/products");
+            const res = await axiosInstance.get("/products", {
+        params: {
+            skip: 0,
+            limit: 1000,  // 필요에 따라 조정
+             // sort: "createdAt",  // 정렬이 필요하면 추가
+            // filters: {}         // 필터가 필요하면 추가
+        },
+    });
             setProducts(res.data.products);
         } catch (err) {
             toast.error("상품 불러오기 실패:", err);
