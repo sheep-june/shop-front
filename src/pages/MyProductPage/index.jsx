@@ -14,14 +14,14 @@ const MyProductsPage = () => {
     const user = useSelector((state) => state.user);
     const { confirm } = useConfirmAlert();
 
-    usePageTitle(user?.userData?.name && `${user.userData.name}님의 상품`);
+    usePageTitle(user?.userData?.name && `${user.userData.name}様の賞品`);
 
     const fetchMyProducts = async () => {
         try {
             const res = await axiosInstance.get("/users/myproducts");
             setProducts(res.data.products);
         } catch (error) {
-            console.error("내가 올린 상품 불러오기 실패:", error);
+            toast.error("私が投稿した商品のインポートに失敗", error);
         }
     };
 
@@ -31,20 +31,20 @@ const MyProductsPage = () => {
 
     const handleDelete = async (id) => {
         const ok = await confirm({
-            title: "정말 삭제하시겠습니까?",
-            text: "삭제된 항목은 되돌릴 수 없습니다.",
-            confirmText: "삭제",
-            cancelText: "취소",
+            title: "本当に削除しますか",
+            text: "削除されたアイテムは元に戻すことはできません。",
+            confirmText: "削除",
+            cancelText: "キャンセル",
         });
 
         if (!ok) return;
 
         try {
             await axiosInstance.delete(`/products/${id}`);
-            toast.success("삭제되었습니다.");
+            toast.success("削除されました。");
             fetchMyProducts();
         } catch (err) {
-            toast.error("삭제 중 오류 발생");
+            toast.error("削除中にエラーが発生");
         }
     };
 
@@ -65,7 +65,7 @@ const MyProductsPage = () => {
     return (
         <section className="w-full px-4">
             <h2 className="text-2xl font-semibold mb-6 text-center text-[#00C4C4]">
-                내가 올린 상품
+                私のあげた商品
             </h2>
 
             {/* 검색창 */}
@@ -77,13 +77,13 @@ const MyProductsPage = () => {
                         setSearchTerm(e.target.value);
                         setCurrentPage(1);
                     }}
-                    placeholder="상품명을 입력하세요"
+                    placeholder="商品名を入力してください"
                     className="w-full max-w-3xl border border-[#00C4C4] p-2 rounded-md focus:outline-none focus:ring-0 focus:border-2 focus:border-[#00C4C4]"
                 />
             </div>
 
             {paginated.length === 0 ? (
-                <p className="text-center text-gray-500">상품이 없습니다.</p>
+                <p className="text-center text-gray-500">商品がありません。</p>
             ) : (
                 <>
                     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -105,7 +105,7 @@ const MyProductsPage = () => {
                                     ₩{product.price.toLocaleString()}
                                 </p>
                                 <p className="text-sm text-gray-500">
-                                    등록일:{" "}
+                                    登録日:{" "}
                                     {new Date(
                                         product.createdAt
                                     ).toLocaleDateString()}
@@ -115,13 +115,13 @@ const MyProductsPage = () => {
                                         to={`/product/${product._id}`}
                                         className="text-blue-600 text-sm hover:underline"
                                     >
-                                        상세보기
+                                        詳細を見る
                                     </Link>
                                     <Link
                                         to={`/product/edit/${product._id}`}
                                         className="text-yellow-600 text-sm hover:underline"
                                     >
-                                        수정
+                                        修整
                                     </Link>
                                     <button
                                         onClick={() =>
@@ -129,7 +129,7 @@ const MyProductsPage = () => {
                                         }
                                         className="text-red-500 text-sm hover:underline"
                                     >
-                                        삭제
+                                        削除
                                     </button>
                                 </div>
                             </li>

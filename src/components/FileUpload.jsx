@@ -72,8 +72,9 @@ const FileUpload = ({ onImageChange, images }) => {
                         >
                             <img
                                 className="w-full h-full object-cover"
-                                src={`${import.meta.env.VITE_SERVER_URL
-                                    }/uploads/${image}`}
+                                src={`${
+                                    import.meta.env.VITE_SERVER_URL
+                                }/uploads/${image}`}
                                 alt={image}
                             />
                         </div>

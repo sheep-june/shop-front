@@ -39,29 +39,29 @@ const FaqItem = ({ faq, onUpdate }) => {
     //     }
     // };
     const handleDelete = async () => {
-    const isConfirmed = await confirm({
-        title: "削除確認",
-        text: "本当に削除しますか？",
-        confirmText: "削除",
-        cancelText: "キャンセル",
-    });
-
-    if (!isConfirmed) return;
-
-    try {
-        await axios.delete(`/api/faq/${faq._id}`, {
-            withCredentials: true,
-            headers: {
-                Authorization: `Bearer ${token}`,
-                "x-xsrf-token": csrfToken,
-            },
+        const isConfirmed = await confirm({
+            title: "削除確認",
+            text: "本当に削除しますか？",
+            confirmText: "削除",
+            cancelText: "キャンセル",
         });
-        toast.success("削除済み");
-        onUpdate(); // FAQ 목록 다시 불러오기 등
-    } catch (err) {
-        toast.error("削除失敗");
-    }
-};
+
+        if (!isConfirmed) return;
+
+        try {
+            await axios.delete(`/api/faq/${faq._id}`, {
+                withCredentials: true,
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "x-xsrf-token": csrfToken,
+                },
+            });
+            toast.success("削除済み");
+            onUpdate(); // FAQ 목록 다시 불러오기 등
+        } catch (err) {
+            toast.error("削除失敗");
+        }
+    };
 
     const handleUpdate = async () => {
         if (!editData.title || !editData.content) {

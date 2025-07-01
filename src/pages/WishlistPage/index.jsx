@@ -13,12 +13,12 @@ const WishlistPage = () => {
             const res = await axiosInstance.get("/users/wishlist");
             setWishlist(res.data.products);
         } catch (error) {
-            console.error("찜 목록 불러오기 실패:", error);
+            console.error("チムリストの読み込みに失敗:", error);
         }
     };
     const user = useSelector((state) => state.user);
 
-    usePageTitle(user?.userData?.name && `${user.userData.name}님의 찜한상품`);
+    usePageTitle(user?.userData?.name && `${user.userData.name}様の気に入った商品`);
 
     useEffect(() => {
         fetchWishlist();
@@ -36,7 +36,7 @@ const WishlistPage = () => {
             await axiosInstance.post("/users/cart/batch", {
                 productIds: selected,
             });
-            toast.success("장바구니에 추가되었습니다.");
+            toast.success("カートに追加されました。");
         } catch (err) {
             console.error(err);
         }
@@ -48,7 +48,7 @@ const WishlistPage = () => {
             await axiosInstance.delete("/users/wishlist/batch", {
                 data: { productIds: selected },
             });
-            toast.success("삭제 완료");
+            toast.success("削除済み");
             setWishlist((prev) =>
                 prev.filter((p) => !selected.includes(p._id))
             );
@@ -61,11 +61,11 @@ const WishlistPage = () => {
     return (
         <section className="max-w-6xl mx-auto p-4">
             <h2 className="text-2xl font-semibold mb-6 text-center">
-                찜한 상품
+                お気に入り商品
             </h2>
             {wishlist.length === 0 ? (
                 <p className="text-center text-gray-500">
-                    찜한 상품이 없습니다.
+                    お気に入り商品がありません。
                 </p>
             ) : (
                 <>
@@ -75,7 +75,7 @@ const WishlistPage = () => {
                             disabled={selected.length === 0}
                             className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] bg-white rounded hover:bg-[#00C4C4] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                         >
-                            장바구니 추가
+                            カートに追加
                         </button>
 
                         <button
@@ -83,7 +83,7 @@ const WishlistPage = () => {
                             disabled={selected.length === 0}
                             className="px-4 py-2 border border-red-500 text-red-500 bg-white rounded hover:bg-red-500 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                         >
-                            삭제
+                            削除
                         </button>
                     </div>
                     <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -109,13 +109,13 @@ const WishlistPage = () => {
                                         {product.title}
                                     </h3>
                                     <p className="text-sm text-gray-700 mb-1">
-                                        ₩{product.price.toLocaleString()}
+                                        ￥{product.price.toLocaleString()}
                                     </p>
                                     <Link
                                         to={`/product/${product._id}`}
                                         className="text-blue-600 text-sm hover:underline"
                                     >
-                                        상세보기
+                                        詳細を見る
                                     </Link>
                                 </div>
                             </li>

@@ -30,14 +30,14 @@ const LoginPage = () => {
     };
 
     const userEmail = {
-        required: "필수 필드 입니다.",
+        required: "必須フィールドです。",
     };
 
     const userPassword = {
-        required: "필수 필드입니다.",
+        required: "必須フィールドです。",
         minLength: {
             value: 6,
-            message: "최소 6자입니다.",
+            message: "最低6文字です。",
         },
     };
 

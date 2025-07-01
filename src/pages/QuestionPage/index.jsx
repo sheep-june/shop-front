@@ -15,26 +15,26 @@ const QuestionPage = () => {
             const res = await axiosInstance.get("/api/question");
             setQuestions(res.data);
         } catch (err) {
-            toast.error("질문 목록을 불러올 수 없습니다.");
+            toast.error("質問リストを読み込めません。");
         }
     };
-    usePageTitle("질문을 작성해 주세요!");
+    usePageTitle("質問を作成してください！");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         await setCsrfToken();
         await new Promise((r) => setTimeout(r, 100));
         if (!newQuestion.title || !newQuestion.content) {
-            return toast.warn("제목과 내용을 모두 입력해주세요.");
+            return toast.warn("タイトルと内容をすべて入力してください。");
         }
         try {
             const res = await axiosInstance.post("/api/question", newQuestion);
-            toast.success("질문이 등록되었습니다.");
+            toast.success("質問が登録されました。");
             setNewQuestion({ title: "", content: "" });
             setShowForm(false);
             setQuestions((prev) => [res.data, ...prev]);
         } catch (err) {
-            toast.error("질문 등록에 실패했습니다.");
+            toast.error("質問の登録に失敗しました。");
         }
     };
 
@@ -53,7 +53,7 @@ const QuestionPage = () => {
                         onClick={() => setShowForm((prev) => !prev)}
                         className="mb-4 px-4 py-2 border border-[#00C4C4] text-[#00C4C4] bg-white rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                     >
-                        {showForm ? "작성 닫기" : "질문 작성"}
+                        {showForm ? "作成閉じる" : "質問作成"}
                     </button>
 
                     {showForm && (
@@ -63,7 +63,7 @@ const QuestionPage = () => {
                         >
                             <input
                                 type="text"
-                                placeholder="제목"
+                                placeholder="題目"
                                 value={newQuestion.title}
                                 onChange={(e) =>
                                     setNewQuestion({
@@ -75,7 +75,7 @@ const QuestionPage = () => {
                             />
 
                             <textarea
-                                placeholder="내용"
+                                placeholder="内容"
                                 value={newQuestion.content}
                                 onChange={(e) =>
                                     setNewQuestion({
@@ -90,14 +90,14 @@ const QuestionPage = () => {
                                 type="submit"
                                 className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] bg-white rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                             >
-                                등록하기
+                                登録する
                             </button>
                         </form>
                     )}
                 </>
             )}
             {questions.length === 0 ? (
-                <p className="text-gray-500">등록된 질문이 없습니다.</p>
+                <p className="text-gray-500">登録された質問がありません。</p>
             ) : (
                 questions.map((q) => <QuestionItem key={q._id} question={q} />)
             )}

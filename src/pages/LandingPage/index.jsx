@@ -25,7 +25,7 @@ const LandingPage = () => {
     // });
     const [quickSearch, setQuickSearch] = useState("");
 
-    usePageTitle("買う売る사고팔고");
+    usePageTitle("買う売る");
 
     useEffect(() => {
         setCsrfToken();
@@ -73,7 +73,7 @@ const LandingPage = () => {
                     value={quickSearch}
                     onChange={(e) => setQuickSearch(e.target.value)}
                     onKeyDown={handleQuickSearch}
-                    placeholder="상품을 검색해보세요"
+                    placeholder="商品を検索してみてください"
                     className="w-full max-w-md border border-[#00C4C4] p-2 rounded-2xl 
              focus:outline-none focus:ring-0 focus:border-2 focus:border-[#00C4C4]"
                 />
@@ -83,7 +83,7 @@ const LandingPage = () => {
                     className="px-4 py-2 bg-white text-[#00C4C4] border border-[#00C4C4] rounded-2xl 
              hover:bg-[#00C4C4] hover:text-white"
                 >
-                    검색
+                    検索
                 </button>
             </div>
             {/* <AdSlider /> */}

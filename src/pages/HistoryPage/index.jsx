@@ -27,10 +27,10 @@ const HistoryPage = () => {
             <table className="w-full text-sm text-left text-gray-500">
                 <thead className="border-[1px]">
                     <tr>
-                        <th className="w-1/4">商品名</th>    
-<th className="w-1/4">数量</th>     
-<th className="w-1/4">価格</th>    
-<th className="w-1/4">購入日</th>    
+                        <th className="w-1/4">商品名</th>
+                        <th className="w-1/4">数量</th>
+                        <th className="w-1/4">価格</th>
+                        <th className="w-1/4">購入日</th>
                     </tr>
                 </thead>
 
@@ -52,8 +52,9 @@ const HistoryPage = () => {
                                 {/* {dayjs(item.dateOfPurchase).format(
                                     "YYYY-MM-DD HH:mm:ss"
                                 )} */}
-                                {dayjs(item.dateOfPurchase).format("YYYY年MM月DD日 HH時mm分ss秒")}
-
+                                {dayjs(item.dateOfPurchase).format(
+                                    "YYYY年MM月DD日 HH時mm分ss秒"
+                                )}
                             </td>
                         </tr>
                     ))}

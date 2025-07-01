@@ -9,11 +9,11 @@ import usePageTitle from "../../hooks/usePageTitle";
 import { toast } from "react-toastify";
 
 const sortOptions = [
-    { id: "views", label: "조회순" },
-    { id: "rating", label: "별점순" },
-    { id: "lowPrice", label: "가격 낮은순" },
-    { id: "highPrice", label: "가격 높은순" },
-    { id: "sold", label: "판매순" },
+    { id: "views", label: "閲覧順" },
+    { id: "rating", label: "評価順" },
+    { id: "lowPrice", label: "安い順" },
+    { id: "highPrice", label: "高い順" },
+    { id: "sold", label: "売上順" },
 ];
 
 const ITEMS_PER_PAGE = 18;
@@ -30,7 +30,7 @@ const SearchPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
 
-    usePageTitle(searchTerm ? `${searchTerm} 검색 결과` : "검색 결과");
+    usePageTitle(searchTerm ? `${searchTerm} 検索結果` : "検索結果");
 
     useEffect(() => {
         if (initialSearch) {
@@ -95,7 +95,7 @@ const SearchPage = () => {
             setProducts(res.data.products);
             setTotalPages(Math.ceil(res.data.totalCount / ITEMS_PER_PAGE));
         } catch (err) {
-            toast.error("검색 실패:", err);
+            toast.error("検索失敗:", err);
         }
     };
 
@@ -123,21 +123,21 @@ const SearchPage = () => {
                     onChange={handleSearchInputChange}
                     className="w-full max-w-xl border border-[#00C4C4] p-2 rounded-md 
              focus:outline-none focus:ring-0 focus:border-2 focus:border-[#00C4C4]"
-                    placeholder="검색어를 입력하세요"
+                    placeholder="検索ワードを入力してください"
                 />
                 <button
                     type="submit"
                     className="px-4 py-2 bg-white text-[#00C4C4] border border-[#00C4C4] rounded 
              hover:bg-[#00C4C4] hover:text-white"
                 >
-                    검색
+                    検索
                 </button>
             </form>
             <div className="flex gap-6">
                 <div className="w-[250px] space-y-4">
                     <div>
                         <h3 className="text-[#00C4C4] font-semibold mb-1 text-center">
-                            카테고리
+                            カテゴリー
                         </h3>
                         <CheckBox
                             items={categories}
@@ -149,7 +149,7 @@ const SearchPage = () => {
                     </div>
                     <div>
                         <h3 className="text-[#00C4C4] font-semibold text-center mb-1">
-                            가격
+                            価格
                         </h3>
                         <RadioBox
                             prices={prices}
@@ -200,14 +200,14 @@ const SearchPage = () => {
                             disabled={currentPage === 1}
                             className="px-3 py-1 border border-[#00C4C4] text-[#00C4C4] rounded hover:bg-[#00C4C4] hover:text-white disabled:opacity-50"
                         >
-                            처음
+                            最初
                         </button>
                         <button
                             onClick={() => changePage(currentPage - 1)}
                             disabled={currentPage === 1}
                             className="px-3 py-1 border border-[#00C4C4] text-[#00C4C4] rounded hover:bg-[#00C4C4] hover:text-white disabled:opacity-50"
                         >
-                            이전
+                            前へ
                         </button>
                         {[...Array(totalPages)].map((_, index) => {
                             const pageNum = index + 1;
@@ -233,14 +233,14 @@ const SearchPage = () => {
                             disabled={currentPage === totalPages}
                             className="px-3 py-1 border border-[#00C4C4] text-[#00C4C4] rounded hover:bg-[#00C4C4] hover:text-white disabled:opacity-50"
                         >
-                            다음
+                            次へ
                         </button>
                         <button
                             onClick={() => changePage(totalPages)}
                             disabled={currentPage === totalPages}
                             className="px-3 py-1 border border-[#00C4C4] text-[#00C4C4] rounded hover:bg-[#00C4C4] hover:text-white disabled:opacity-50"
                         >
-                            마지막
+                            最後
                         </button>
                     </div>
                 </div>

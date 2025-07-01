@@ -50,7 +50,7 @@ const userSlice = createSlice({
             })
             .addCase(registerUser.fulfilled, (state) => {
                 state.isLoading = false;
-                toast.info("회원가입을 성공했습니다.");
+                toast.info("会員登録に成功しました。");
             })
             .addCase(registerUser.rejected, (state, action) => {
                 state.isLoading = false;
@@ -111,7 +111,7 @@ const userSlice = createSlice({
             .addCase(addToCart.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.userData.cart = action.payload;
-                toast.info("장바구니에 추가되었습니다.");
+                toast.info("カートに追加されました。");
             })
             .addCase(addToCart.rejected, (state, action) => {
                 state.isLoading = false;
@@ -139,7 +139,7 @@ const userSlice = createSlice({
                 state.isLoading = false;
                 state.cartDetail = action.payload.productInfo;
                 state.userData.cart = action.payload.cart;
-                toast.info("상품이 장바구니에서 제거되었습니다.");
+                toast.info("商品がカートから削除されました。");
             })
             .addCase(removeCartItem.rejected, (state, action) => {
                 state.isLoading = false;
@@ -154,7 +154,7 @@ const userSlice = createSlice({
                 state.isLoading = false;
                 state.cartDetail = [];
                 state.userData.cart = [];
-                toast.info("성공적으로 상품을 구매했습니다.");
+                toast.info("商品を正常に購入しました。");
             })
             .addCase(payProducts.rejected, (state, action) => {
                 state.isLoading = false;

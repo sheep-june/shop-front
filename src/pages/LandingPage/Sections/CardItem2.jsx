@@ -42,7 +42,7 @@ const CardItem2 = ({ product }) => {
           {title}
         </p>
         <p className="mt-1 text-white text-base font-semibold">
-          {price.toLocaleString()}원
+          {price.toLocaleString()}円
         </p>
       </div>
     </Link>

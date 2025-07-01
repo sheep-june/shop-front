@@ -19,7 +19,7 @@ const LocationPage = () => {
                 const geocoder = new window.kakao.maps.services.Geocoder();
 
                 geocoder.addressSearch(
-                    "서울특별시 영등포구 영중로56 신한빌딩 4층",
+                    "韓国 ソウル特別市 永登浦区 永中路56 新韓ビル 4階",
                     function (result, status) {
                         if (status === window.kakao.maps.services.Status.OK) {
                             const coords = new window.kakao.maps.LatLng(

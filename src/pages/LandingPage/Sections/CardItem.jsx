@@ -45,8 +45,8 @@ const CardItem = ({ product, refreshWishlist, wishlist }) => {
             if (refreshWishlist) refreshWishlist();
         } catch (err) {
             const msg = err.response?.data?.message || err.message;
-            console.error("찜 처리 실패:", msg);
-            if (msg === "이미 찜한 상품입니다.") {
+            console.error("処理失敗:", msg);
+            if (msg === "すでにお気に入りの商品です。") {
                 setWished(true);
             }
             alert(msg);
@@ -88,7 +88,7 @@ const CardItem = ({ product, refreshWishlist, wishlist }) => {
                     <span>{Number(product.averageRating || 0).toFixed(1)}</span>
                 </div>
                 <p className="text-sm text-gray-700">
-                    {product.price.toLocaleString()}원
+                    {product.price.toLocaleString()}円
                 </p>
             </div>
         </Link>

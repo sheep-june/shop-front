@@ -60,7 +60,7 @@ const NavItem = ({ mobile }) => {
                     <span className="text-[#00C4C4] font-semibold">
                         {userData.name}
                     </span>
-                    様
+                    さん
                 </li>
             )}
 

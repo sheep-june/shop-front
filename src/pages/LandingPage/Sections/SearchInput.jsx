@@ -8,7 +8,7 @@ const RadioBox = ({ prices, checkedPrice, onFilters }) => {
 
     return (
         <div className="p-4 mb-4 bg-white border border-[#00C4C4] rounded-md">
-            <h3 className="font-semibold text-[#00C4C4] mb-2">가격대</h3>
+            <h3 className="font-semibold text-[#00C4C4] mb-2">価格帯</h3>
             {prices?.map((price) => (
                 <div key={price._id} className="flex items-center mb-1">
                     <input
