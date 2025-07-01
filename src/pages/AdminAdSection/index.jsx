@@ -39,7 +39,7 @@ const AdminAdSection = () => {
             const res = await axiosInstance.get("/api/admin/ads");
             setAds(res.data);
         } catch (err) {
-            toast.error("광고 불러오기 실패:", err);
+            toast.error("広告の読み込みに失敗:", err);
         }
     };
 
@@ -47,7 +47,7 @@ const AdminAdSection = () => {
         e.preventDefault();
 
         if (!selectedProduct || !videoFile) {
-            alert("상품과 영상 파일을 선택해주세요.");
+            alert("商品と映像ファイルを選択してください。");
             return;
         }
 
@@ -62,14 +62,14 @@ const AdminAdSection = () => {
                 },
             });
 
-            alert("광고가 등록되었습니다.");
+            alert("広告が登録されました。");
             setSelectedProduct(null);
             setVideoFile(null);
             setSearchTerm("");
             fetchAds();
         } catch (err) {
-            toast.error("광고 등록 실패:", err);
-            alert("광고 등록 중 오류 발생");
+            toast.error("広告登録失敗:", err);
+            alert("広告登録エラー発生");
         }
     };
 
@@ -85,10 +85,10 @@ const AdminAdSection = () => {
     // };
     const handleDelete = async (id) => {
     const isConfirmed = await confirm({
-        title: "광고 삭제",
-        text: "이 광고를 삭제하시겠습니까?",
-        confirmText: "삭제",
-        cancelText: "취소",
+        title: "広告削除",
+        text: "この広告を削除しますか",
+        confirmText: "削除",
+        cancelText: "キャンセル",
     });
 
     if (!isConfirmed) return;
@@ -96,9 +96,9 @@ const AdminAdSection = () => {
     try {
         await axiosInstance.delete(`/api/admin/ads/${id}`);
         fetchAds();
-        toast.success("광고 삭제 완료");
+        toast.success("広告削除完了");
     } catch (err) {
-        toast.error("광고 삭제 실패");
+        toast.error("広告削除失敗");
     }
 };
 
@@ -119,8 +119,8 @@ const AdminAdSection = () => {
 
             setAds(reordered);
         } catch (err) {
-            toast.error("순서 변경 실패:", err);
-            alert("광고 순서 변경에 실패했습니다.");
+            toast.error("順序変更失敗:", err);
+            alert("広告の順番の変更に失敗しました。");
         }
     };
 
@@ -130,16 +130,16 @@ const AdminAdSection = () => {
 
     return (
         <section className="p-4 max-w-3xl mx-auto">
-            <h2 className="text-xl font-bold mb-4">광고 등록</h2>
+            <h2 className="text-xl font-bold mb-4">広告登録</h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                    <label className="block mb-1 font-medium">상품 검색</label>
+                    <label className="block mb-1 font-medium">商品検索</label>
                     <input
                         type="text"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        placeholder="상품명을 입력하세요"
+                        placeholder="商品名を入力してください"
                         className="w-full border p-2"
                     />
                 </div>
@@ -162,7 +162,7 @@ const AdminAdSection = () => {
 
                 {selectedProduct && (
                     <div className="text-sm text-green-700">
-                        선택된 상품: <strong>{selectedProduct.title}</strong>
+                        選ばれた商品: <strong>{selectedProduct.title}</strong>
                     </div>
                 )}
 

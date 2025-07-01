@@ -22,7 +22,7 @@ const BoardSection = () => {
             const res = await axios.get("/api/question");
             setQuestions(res.data);
         } catch (err) {
-            toast.error("질문 목록을 불러오지 못했습니다.");
+            toast.error("質問リストを読み込めませんでした。");
         }
     };
 
@@ -53,12 +53,12 @@ const BoardSection = () => {
                     },
                 }
             );
-            toast.success("답변 수정 완료");
+            toast.success("回答修正完了");
             setIsEditingCommentId(null);
             setEditContent("");
             fetchQuestions();
         } catch (err) {
-            toast.error("답변 수정 실패");
+            toast.error("回答修正失敗");
         }
     };
 
@@ -69,11 +69,11 @@ const BoardSection = () => {
     return (
         <div className="p-6">
             <h2 className="text-xl font-bold mb-4 border-b pb-2">
-                질문게시판 관리
+                質問掲示板管理
             </h2>
 
             {questions.length === 0 ? (
-                <p className="text-gray-500">질문이 없습니다.</p>
+                <p className="text-gray-500">質問がありません。</p>
             ) : (
                 <div className="space-y-4">
                     {questions.map((q) => (
@@ -86,13 +86,13 @@ const BoardSection = () => {
                                 {q.content}
                             </p>
                             <p className="text-xs text-gray-400 mt-2">
-                                작성자: {q.user?.name || "유저"} /{" "}
+                                作成者: {q.user?.name || "ユーザー"} /{" "}
                                 {new Date(q.createdAt).toLocaleString()}
                             </p>
 
                             {q.comment ? (
                                 <div className="mt-4 bg-gray-50 p-3 rounded text-sm">
-                                    <p className="font-medium">답변</p>
+                                    <p className="font-medium">答弁</p>
                                     {isEditingCommentId === q.comment._id ? (
                                         <>
                                             <textarea
@@ -109,7 +109,7 @@ const BoardSection = () => {
                                                     onClick={cancelEdit}
                                                     className="px-3 py-1 border text-gray-500 border-gray-500 rounded hover:bg-gray-100 text-sm"
                                                 >
-                                                    취소
+                                                    キャンセル
                                                 </button>
                                                 <button
                                                     onClick={() =>
@@ -117,7 +117,7 @@ const BoardSection = () => {
                                                     }
                                                     className="px-3 py-1 border text-yellow-500 border-yellow-500 rounded hover:bg-yellow-500 hover:text-white text-sm"
                                                 >
-                                                    저장
+                                                    保存
                                                 </button>
                                             </div>
                                         </>
@@ -144,8 +144,8 @@ const BoardSection = () => {
                                         className="mt-3 px-3 py-1 border border-[#00C4C4] text-[#00C4C4] text-sm bg-white rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                                     >
                                         {activeCommentId === q._id
-                                            ? "닫기"
-                                            : "답변 작성"}
+                                            ? "閉じる"
+                                            : "答弁作成"}
                                     </button>
 
                                     {activeCommentId === q._id && (
@@ -170,10 +170,10 @@ const BoardSection = () => {
                                 <button
     onClick={async () => {
         const isConfirmed = await confirm({
-            title: "질문 삭제",
-            text: "이 질문을 정말 삭제하시겠습니까?",
-            confirmText: "삭제",
-            cancelText: "취소",
+            title: "質問削除",
+            text: "この質問を本当に削除しますか",
+            confirmText: "削除",
+            cancelText: "キャンセル",
         });
 
         if (!isConfirmed) return;
@@ -186,15 +186,15 @@ const BoardSection = () => {
                     "x-xsrf-token": getCookie("XSRF-TOKEN"),
                 },
             });
-            toast.success("질문 삭제 완료");
+            toast.success("質問削除済み");
             fetchQuestions();
         } catch (err) {
-            toast.error("질문 삭제 실패");
+            toast.error("質問削除失敗");
         }
     }}
     className="px-3 py-1 border border-red-500 text-red-500 bg-white text-sm rounded hover:bg-red-500 hover:text-white transition-colors duration-200"
 >
-    질문 삭제
+    質問削除
 </button>
 
 
@@ -209,17 +209,17 @@ const BoardSection = () => {
                                             }
                                             className="px-3 py-1 border border-yellow-500 text-yellow-500 text-sm rounded bg-white hover:bg-yellow-500 hover:text-white transition-colors duration-200"
                                         >
-                                            답변 수정
+                                            答弁修正
                                         </button>
 
 
                                         <button
     onClick={async () => {
         const isConfirmed = await confirm({
-            title: "답변 삭제",
-            text: "이 답변을 정말 삭제하시겠습니까?",
-            confirmText: "삭제",
-            cancelText: "취소",
+            title: "回答削除",
+            text: "この回答を本当に削除しますか",
+            confirmText: "削除",
+            cancelText: "キャンセル",
         });
 
         if (!isConfirmed) return;
@@ -232,15 +232,15 @@ const BoardSection = () => {
                     "x-xsrf-token": getCookie("XSRF-TOKEN"),
                 },
             });
-            toast.success("답변 삭제 완료");
+            toast.success("回答削除済み");
             fetchQuestions();
         } catch (err) {
-            toast.error("답변 삭제 실패");
+            toast.error("回答削除失敗");
         }
     }}
     className="px-3 py-1 border border-gray-500 text-gray-500 text-sm rounded bg-white hover:bg-gray-500 hover:text-white transition-colors duration-200"
 >
-    답변 삭제
+    回答削除
 </button>
 
                                     </>

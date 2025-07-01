@@ -16,13 +16,13 @@ const AdminDashboardPage = () => {
         <section className="p-4">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-xl border-[#00C4C4] text-[#00C4C4]">
-                    관리자 대시보드
+                    管理者ダッシュボード
                 </h2>
                 <button
                     onClick={handleAdminLogout}
                     className="text-sm px-3 py-1 border border-[#00C4C4] text-[#00C4C4] bg-white rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                 >
-                    로그아웃
+                    ログアウト
                 </button>
             </div>
 
@@ -35,7 +35,7 @@ const AdminDashboardPage = () => {
                     }`}
                     onClick={() => setSection("users")}
                 >
-                    전체 사용자 보기
+                    全ユーザーを表示
                 </button>
 
                 <button
@@ -46,7 +46,7 @@ const AdminDashboardPage = () => {
                     }`}
                     onClick={() => setSection("posts")}
                 >
-                    전체 게시글 보기
+                    全体の投稿を見る
                 </button>
 
                 <Link
@@ -54,28 +54,28 @@ const AdminDashboardPage = () => {
                     // to="/admin/ad-image"
                     className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] bg-white rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200 inline-block"
                 >
-                    광고 설정
+                    広告設定
                 </Link>
 
                 <Link
                     to="/admin/board"
                     className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] bg-white rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200 inline-block"
                 >
-                    질문게시판 관리
+                    質問掲示板管理
                 </Link>
 
                 <Link
                     to="/admin/faq-write"
                     className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] bg-white rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200 inline-block"
                 >
-                    FAQ 작성
+                    FAQ作成
                 </Link>
 
                 <Link
                     to="/board/faq"
                     className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] bg-white rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200 inline-block"
                 >
-                    FAQ 게시판
+                    FAQ掲示板
                 </Link>
             </div>
 

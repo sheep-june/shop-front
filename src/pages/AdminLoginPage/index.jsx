@@ -36,12 +36,12 @@ const AdminLoginPage = () => {
         <section className="flex flex-col justify-center mt-20 max-w-[400px] m-auto">
             <div className="p-6 bg-white rounded-md shadow-md">
                 <h1 className="text-3xl font-semibold text-center">
-                    관리자 로그인
+                    管理者ログイン
                 </h1>
                 <form className="mt-6" onSubmit={handleSubmit}>
                     <div className="mb-2">
                         <label className="text-sm font-semibold text-gray-800">
-                            이메일
+                             メール
                         </label>
                         <input
                             type="email"
@@ -53,7 +53,7 @@ const AdminLoginPage = () => {
                     </div>
                     <div className="mb-2">
                         <label className="text-sm font-semibold text-gray-800">
-                            비밀번호
+                            パスワード
                         </label>
                         <input
                             type="password"
@@ -69,7 +69,7 @@ const AdminLoginPage = () => {
                             type="submit"
                             className="w-full px-4 py-2 text-white bg-black rounded-md hover:bg-gray-700"
                         >
-                            로그인
+                            ログイン
                         </button>
                     </div>
                 </form>

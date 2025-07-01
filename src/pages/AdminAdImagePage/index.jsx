@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axiosInstance, { setCsrfToken } from "../../utils/axios";
 import { toast } from "react-toastify";
 import { useConfirmAlert } from "../../hooks/useConfirmAlert";
+import Swal from "sweetalert2";
 
 const PRODUCT_API_PATH = "/products";
 
@@ -67,7 +68,18 @@ const { confirm } = useConfirmAlert();
             await axiosInstance.post("/api/admin/ad-images", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
-            alert("広告が登録されました。");
+            Swal.fire({
+            title: "登録完了",
+                text: "広告が登録されました。",
+                icon: "success",
+                confirmButtonText: "確認",
+                showCancelButton: false,
+                buttonsStyling: false,
+                customClass: {
+                    confirmButton:
+                    "border-2 border-[#2dd4bf] text-[#2dd4bf] bg-white hover:bg-[#2dd4bf] hover:text-white rounded px-5 py-2 transition font-medium",
+                },
+            });
             setSelectedProduct(null);
             setImageFile(null);
             setSearchTerm("");

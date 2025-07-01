@@ -47,10 +47,10 @@ const AuthPage = () => {
                 sessionStorage.removeItem("redirectAfterLogin");
                 navigate(target, { replace: true });
             } else {
-                toast.error("로그인에 실패했습니다");
+                toast.error("ログインに失敗しました");
             }
         } catch (error) {
-            toast.error("로그인 에러:", error);
+            toast.error("ログインエラー", error);
         }
     };
 
@@ -68,10 +68,10 @@ const AuthPage = () => {
                 resetRegister();
                 setIsRightPanelActive(false);
             } else {
-                toast.error("회원가입 실패");
+                toast.error("会員登録失敗");
             }
         } catch (error) {
-            toast.error("회원가입 에러:", error);
+            toast.error("会員登録エラー", error);
         }
     };
 
@@ -89,7 +89,7 @@ const AuthPage = () => {
                     onSubmit={handleRegisterSubmit((data) => {
                         if (data.password !== data.confirmPassword) {
                             alert(
-                                "비밀번호와 비밀번호 확인이 일치하지 않습니다."
+                                "パスワードとパスワードの確認が一致しません。"
                             );
                             return;
                         }
@@ -97,13 +97,13 @@ const AuthPage = () => {
                     })}
                     className="bg-white flex flex-col items-center justify-center h-full px-10 text-center"
                 >
-                    <h1 className="text-2xl text-[#00C4C4] mb-2">회원가입</h1>
+                    <h1 className="text-2xl text-[#00C4C4] mb-2">会員登録</h1>
 
                     <input
                         type="text"
                         placeholder="Name"
                         {...registerRegister("name", {
-                            required: "이름은 필수입니다.",
+                            required: "名前は必須です。",
                         })}
                         className="bg-white border border-[#00C4C4] px-4 py-2 w-full max-w-[300px] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00C4C4]"
                     />
@@ -117,7 +117,7 @@ const AuthPage = () => {
                         type="email"
                         placeholder="Email"
                         {...registerRegister("email", {
-                            required: "이메일은 필수입니다.",
+                            required: "メールは必須です。",
                         })}
                         className="bg-white border border-[#00C4C4] px-4 py-2 w-full max-w-[300px] mt-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00C4C4]"
                     />
@@ -131,8 +131,8 @@ const AuthPage = () => {
                         type="password"
                         placeholder="Password"
                         {...registerRegister("password", {
-                            required: "비밀번호는 필수입니다.",
-                            minLength: { value: 6, message: "최소 6자입니다." },
+                            required: "パスワードは必須です。",
+                            minLength: { value: 6, message: "最低6文字です。" },
                         })}
                         className="bg-white border border-[#00C4C4] px-4 py-2 w-full max-w-[300px] mt-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00C4C4]"
                     />
@@ -146,7 +146,7 @@ const AuthPage = () => {
                         type="password"
                         placeholder="Confirm Password"
                         {...registerRegister("confirmPassword", {
-                            required: "비밀번호 확인은 필수입니다.",
+                            required: "パスワードの確認は必須です。",
                         })}
                         className="bg-white border border-[#00C4C4] px-4 py-2 w-full max-w-[300px] mt-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00C4C4]"
                     />
@@ -161,14 +161,14 @@ const AuthPage = () => {
                             type="submit"
                             className="w-[120px] py-2 border border-[#00C4C4] text-[#00C4C4] bg-white rounded-full hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                         >
-                            회원가입
+                            会員登録
                         </button>
                         <button
                             type="button"
                             onClick={() => setIsRightPanelActive(false)}
                             className="w-[120px] py-2 border border-pink-500 text-pink-500 bg-white rounded-full hover:bg-pink-500 hover:text-white transition-colors duration-200"
                         >
-                            로그인으로
+                            ログインで
                         </button>
                     </div>
                 </form>
@@ -186,13 +186,13 @@ const AuthPage = () => {
                     onSubmit={handleLoginSubmit(onLogin)}
                     className="bg-white flex flex-col items-center justify-center h-full px-10 text-center"
                 >
-                    <h1 className="text-2xl text-[#00C4C4] mb-2">로그인</h1>
+                    <h1 className="text-2xl text-[#00C4C4] mb-2">ログイン</h1>
 
                     <input
                         type="email"
                         placeholder="Email"
                         {...loginRegister("email", {
-                            required: "이메일은 필수입니다.",
+                            required: "メールは必須です。",
                         })}
                         className="bg-white border border-[#00C4C4] px-4 py-2 w-full max-w-[300px] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00C4C4]"
                     />
@@ -206,8 +206,8 @@ const AuthPage = () => {
                         type="password"
                         placeholder="Password"
                         {...loginRegister("password", {
-                            required: "비밀번호는 필수입니다.",
-                            minLength: { value: 6, message: "최소 6자입니다." },
+                            required: "パスワードは必須です。",
+                            minLength: { value: 6, message: "最低6文字です。" },
                         })}
                         className="bg-white border border-[#00C4C4] px-4 py-2 w-full max-w-[300px] mt-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00C4C4]"
                     />
@@ -222,14 +222,14 @@ const AuthPage = () => {
                             type="submit"
                             className="w-[120px] py-2 border border-[#00C4C4] text-[#00C4C4] bg-white rounded-full hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                         >
-                            로그인
+                            ログイン
                         </button>
                         <button
                             type="button"
                             onClick={() => setIsRightPanelActive(true)}
                             className="w-[120px] py-2 border border-pink-500 text-pink-500 bg-white rounded-full hover:bg-pink-500 hover:text-white transition-colors duration-200"
                         >
-                            회원가입으로
+                            会員登録で
                         </button>
                     </div>
                 </form>
@@ -255,8 +255,8 @@ const AuthPage = () => {
                     </h1>
                     <p className="text-sm mb-4">
                         {isRightPanelActive
-                            ? "회원가입을 하고 여정을 시작하세요"
-                            : "로그인하고 여정을 시작하세요"}
+                            ? "会員登録をして旅程を始めてください"
+                            : "ログインして旅程を始めてください"}
                     </p>
                 </div>
             </div>

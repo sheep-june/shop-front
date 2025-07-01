@@ -12,7 +12,7 @@ const CartPage = () => {
     const [cartItems, setCartItems] = useState([]);
     const [selected, setSelected] = useState([]);
 
-    usePageTitle("장바구니");
+    usePageTitle("買い物かご");
 
     useEffect(() => {
         dispatch(fetchUserCart());
@@ -54,7 +54,7 @@ const CartPage = () => {
                 }));
 
             if (!selectedItems.length) {
-                toast.warn("결제할 상품을 선택하세요.");
+                toast.warn("決済する商品を選択してください。");
                 return;
             }
 
@@ -62,12 +62,12 @@ const CartPage = () => {
                 cartDetail: selectedItems,
             });
 
-            toast.success("결제가 완료되었습니다.");
+            toast.success("決済が完了しました。");
             dispatch(fetchUserCart());
             setSelected([]);
         } catch (err) {
-            toast.error("결제 실패:", err);
-            toast.error("결제 중 오류 발생");
+            toast.error("決済失敗", err);
+            toast.error("決済エラー発生");
         }
     };
 
@@ -76,7 +76,7 @@ const CartPage = () => {
             await setCsrfToken();
 
             if (!selected.length) {
-                toast.warn("삭제할 상품을 선택하세요.");
+                toast.warn("削除する商品を選択してください。");
                 return;
             }
 
@@ -86,12 +86,12 @@ const CartPage = () => {
                 });
             }
 
-            toast.success("선택한 상품이 삭제되었습니다.");
+            toast.success("選択した商品が削除されました。");
             dispatch(fetchUserCart());
             setSelected([]);
         } catch (err) {
-            toast.error("삭제 실패:", err);
-            toast.error("삭제 중 오류 발생");
+            toast.error("削除失敗", err);
+            toast.error("決済エラー発生");
         }
     };
 
@@ -151,13 +151,13 @@ const CartPage = () => {
     const handleRecommend = () => {
         const B = parseInt(budget, 10);
         if (isNaN(B) || B <= 0) {
-            setRecError("유효한 예산을 입력해주세요.");
+            setRecError("有効な予算を入力してください。");
             setRecommended([]);
             return;
         }
         const cheapest = Math.min(...cartItems.map((i) => i.price));
         if (B < cheapest) {
-            setRecError("예산이 부족하시다구요?");
+            setRecError("予算が足りないんですって？");
             setRecommended([]);
             return;
         }
@@ -198,12 +198,12 @@ const CartPage = () => {
                     params: { productId: item._id },
                 });
             }
-            toast.success("추천 상품 결제 완료");
+            toast.success("おすすめ商品決済完了");
             dispatch(fetchUserCart());
             toggleRec();
         } catch (err) {
             console.error(err);
-            toast.error("추천 결제 실패");
+            toast.error("おすすめ決済失敗");
         }
     };
     // 추천 기능 추가 끝
@@ -322,12 +322,12 @@ const CartPage = () => {
     return (
         <section className="max-w-5xl mx-auto p-4">
             <h2 className="text-2xl font-semibold text-center mb-6">
-                나의 장바구니
+                私の買い物かご
             </h2>
 
             {cartItems?.length === 0 ? (
                 <p className="text-center text-gray-500">
-                    장바구니가 비었습니다.
+                    買い物かごが空です。
                 </p>
             ) : (
                 <>
@@ -335,9 +335,9 @@ const CartPage = () => {
                         <thead>
                             <tr className="bg-gray-100">
                                 <th></th>
-                                <th>사진</th>
-                                <th>개수</th>
-                                <th>가격</th>
+                                <th>写真</th>     
+<th>数量</th>     
+<th>価格</th> 
                             </tr>
                         </thead>
                         <tbody>
@@ -377,7 +377,7 @@ const CartPage = () => {
                                             >
                                                 <Minus size={16} />
                                             </button>
-                                            {product.quantity} 개
+                                            {product.quantity} 個
                                             <button
                                                 className="p-1 border border-[#00C4C4] text-[#00C4C4] bg-transparent rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                                                 onClick={() =>
@@ -395,7 +395,7 @@ const CartPage = () => {
                                         {(
                                             product.price * product.quantity
                                         ).toLocaleString()}{" "}
-                                        원
+                                        円
                                     </td>
                                 </tr>
                             ))}
@@ -404,22 +404,22 @@ const CartPage = () => {
 
                     <div className="flex justify-between mt-6">
                         <div className="text-lg font-bold">
-                            합계: {totalPrice?.toLocaleString() || 0} 원
-                        </div>
+  合計：{totalPrice?.toLocaleString() || 0} 円
+</div>
                         <div className="flex gap-2">
                             <button
                                 onClick={handleDeleteSelected}
                                 disabled={selected.length === 0}
                                 className="border border-red-500 text-red-500 bg-white hover:bg-red-500 hover:text-white px-4 py-2 rounded disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                             >
-                                삭제
+                                削除
                             </button>
                             <button
                                 onClick={handlePaymentClick}
                                 disabled={selected.length === 0}
                                 className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] bg-white rounded hover:bg-[#00C4C4] hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
                             >
-                                결제하기
+                                決済する
                             </button>
                         </div>
                     </div>
@@ -489,14 +489,14 @@ const CartPage = () => {
         onClick={toggleRec}
         className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] font-semibold rounded-md hover:bg-[#00C4C4] hover:text-white transition duration-200 w-fit"
     >
-        예산이 부족하시다구요?
+        予算が足りないんですって？
     </button>
 
     {showRec && (
         <div className="mt-4 border border-[#00C4C4] bg-white p-6 rounded-xl shadow-md">
             <input
                 type="number"
-                placeholder="예산 입력 (원)"
+                placeholder="予算入力 (円)"
                 value={budget}
                 onChange={(e) => setBudget(e.target.value)}
                 className="w-full p-3 mb-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00C4C4] transition duration-150"
@@ -506,7 +506,7 @@ const CartPage = () => {
                 className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] font-semibold rounded-md hover:bg-[#00C4C4] hover:text-white transition duration-200 w-fit"
                 onClick={handleRecommend}
             >
-                추천받기
+                おすすめしてもらう
             </button>
 
             {recError && (
@@ -519,21 +519,21 @@ const CartPage = () => {
                         {recommended.map((item) => (
                             <li key={item._id}>
                                 <span className="font-semibold">{item.title}</span> —{" "}
-                                {item.price.toLocaleString()}원
+                                {item.price.toLocaleString()}円
                             </li>
                         ))}
                     </ul>
 
                     <p className="font-bold text-right text-lg text-gray-700 mb-4">
-                        총합:{" "}
-                        {recommended.reduce((sum, i) => sum + i.price, 0).toLocaleString()}원
+                        総合:{" "}
+                        {recommended.reduce((sum, i) => sum + i.price, 0).toLocaleString()}円
                     </p>
 
                     <button
                         className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] font-semibold rounded-md hover:bg-[#00C4C4] hover:text-white transition duration-200 w-fit"
                         onClick={handlePurchase}
                     >
-                        추천 상품 결제 및 삭제
+                        おすすめ商品の決済及び削除
                     </button>
                 </div>
             )}

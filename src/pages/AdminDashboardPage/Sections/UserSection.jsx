@@ -19,7 +19,7 @@ const UserSection = () => {
             });
             setUsers(res.data);
         } catch (err) {
-            toast.error("유저 불러오기 실패", err);
+            toast.error("ユーザーの読み込み失敗", err);
         }
     };
 
@@ -50,7 +50,7 @@ const UserSection = () => {
         });
         fetchUsers();
     } catch (err) {
-        toast.error("유저 삭제 실패");
+        toast.error("ユーザー削除失敗");
     }
 };
 
@@ -75,7 +75,7 @@ const UserSection = () => {
             <div className="mb-4">
                 <input
                     type="text"
-                    placeholder="이메일로 검색"
+                    placeholder="Eメールで検索"
                     value={search}
                     onChange={(e) => {
                         setSearch(e.target.value);
@@ -93,16 +93,16 @@ const UserSection = () => {
                         className="flex justify-between border border-[#00C4C4] p-3 rounded items-center"
                     >
                         <div>
-                            <p className="font-semibold">이름: {user.name}</p>
+                            <p className="font-semibold">名前: {user.name}</p>
                             <p className="text-gray-700">
-                                이메일: {user.email}
+                                メール: {user.email}
                             </p>
                         </div>
                         <button
                             className="px-3 py-1 border border-red-500 text-red-500 bg-white rounded hover:bg-red-500 hover:text-white transition-colors duration-200"
                             onClick={() => handleDeleteUser(user._id)}
                         >
-                            삭제
+                            削除
                         </button>
                     </li>
                 ))}
