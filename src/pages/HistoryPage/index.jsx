@@ -49,9 +49,11 @@ const HistoryPage = () => {
                                 円
                             </td>
                             <td>
-                                {dayjs(item.dateOfPurchase).format(
+                                {/* {dayjs(item.dateOfPurchase).format(
                                     "YYYY-MM-DD HH:mm:ss"
-                                )}
+                                )} */}
+                                {dayjs(item.dateOfPurchase).format("YYYY年MM月DD日 HH時mm分ss秒")}
+
                             </td>
                         </tr>
                     ))}
