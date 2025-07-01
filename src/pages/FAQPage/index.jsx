@@ -16,25 +16,25 @@ const FAQPage = () => {
             const res = await axios.get("/api/faq");
             setFaqs(res.data);
         } catch (err) {
-            toast.error("FAQ 목록을 불러오지 못했습니다.");
+            toast.error("FAQリストを読み込めませんでした。");
         }
     };
 
-    usePageTitle("FAQ를 확인해주세요!");
+    usePageTitle("FAQを確認してください！");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!newFaq.title || !newFaq.content)
-            return toast.warn("모든 항목을 입력해주세요.");
+            return toast.warn("すべての項目を入力してください。");
         try {
             const res = await axios.post("/api/faq", newFaq, {
                 withCredentials: true,
             });
             setNewFaq({ title: "", content: "" });
             setFaqs((prev) => [res.data, ...prev]);
-            toast.success("FAQ 등록 완료");
+            toast.success("FAQ登録完了");
         } catch (err) {
-            toast.error("FAQ 등록 실패");
+            toast.error("FAQ登録失敗");
         }
     };
 
@@ -68,12 +68,12 @@ const FAQPage = () => {
                         type="submit"
                         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                     >
-                        등록
+                        登録
                     </button>
                 </form>
             )}
             {faqs.length === 0 ? (
-                <p className="text-gray-500">FAQ가 없습니다.</p>
+                <p className="text-gray-500">FAQがありません。</p>
             ) : (
                 faqs.map((faq) => (
                     <FaqItem key={faq._id} faq={faq} onUpdate={fetchFaqs} />

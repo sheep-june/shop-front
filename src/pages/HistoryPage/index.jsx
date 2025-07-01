@@ -16,21 +16,21 @@ const HistoryPage = () => {
         (currentPage - 1) * ITEMS_PER_PAGE,
         currentPage * ITEMS_PER_PAGE
     );
-    usePageTitle("주문 내역");
+    usePageTitle("注文内訳");
 
     return (
         <section>
             <div className="text-center m-7">
-                <h2 className="text-2xl">주문 내역</h2>
+                <h2 className="text-2xl">注文内訳</h2>
             </div>
 
             <table className="w-full text-sm text-left text-gray-500">
                 <thead className="border-[1px]">
                     <tr>
-                        <th className="w-1/4">상품명</th>
-                        <th className="w-1/4">수량</th>
-                        <th className="w-1/4">가격</th>
-                        <th className="w-1/4">구매일</th>
+                        <th className="w-1/4">商品名</th>    
+<th className="w-1/4">数量</th>     
+<th className="w-1/4">価格</th>    
+<th className="w-1/4">購入日</th>    
                     </tr>
                 </thead>
 
@@ -46,7 +46,7 @@ const HistoryPage = () => {
                                     item.totalPrice ??
                                     0
                                 ).toLocaleString()}
-                                원
+                                円
                             </td>
                             <td>
                                 {dayjs(item.dateOfPurchase).format(

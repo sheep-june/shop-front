@@ -13,7 +13,7 @@ const FaqWritePage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!form.title || !form.content) {
-            return toast.warn("제목과 내용을 모두 입력해주세요.");
+            return toast.warn("タイトルと内容をすべて入力してください。");
         }
 
         try {
@@ -24,28 +24,28 @@ const FaqWritePage = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            toast.success("FAQ 작성 완료!");
+            toast.success("FAQ作成完了！");
             navigate("/board/faq");
         } catch (err) {
-            toast.error("FAQ 작성 실패");
+            toast.error("FAQ作成失敗");
         }
     };
 
     if (!isAdmin) {
         return (
             <p className="text-center text-red-500">
-                관리자만 접근 가능합니다.
+                管理者のみアクセスできます。
             </p>
         );
     }
 
     return (
         <div className="p-6 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold mb-4">FAQ 작성</h2>
+            <h2 className="text-2xl font-bold mb-4">FAQ作成</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <input
                     type="text"
-                    placeholder="제목"
+                    placeholder="題目"
                     value={form.title}
                     onChange={(e) =>
                         setForm({ ...form, title: e.target.value })
@@ -53,7 +53,7 @@ const FaqWritePage = () => {
                     className="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#00C4C4] focus:border-[#00C4C4] transition-colors duration-200"
                 />
                 <textarea
-                    placeholder="내용"
+                    placeholder="内容"
                     value={form.content}
                     onChange={(e) =>
                         setForm({ ...form, content: e.target.value })
@@ -64,7 +64,7 @@ const FaqWritePage = () => {
                     type="submit"
                     className="px-4 py-2 bg-white text-[#00C4C4] border border-[#00C4C4] rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                 >
-                    작성하기
+                    作成
                 </button>
             </form>
         </div>

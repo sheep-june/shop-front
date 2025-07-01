@@ -19,7 +19,7 @@ const EditProductPage = () => {
         images: [],
     });
 
-    usePageTitle("상품수정");
+    usePageTitle("商品修正");
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -29,7 +29,7 @@ const EditProductPage = () => {
                 );
                 setProduct(res.data[0]);
             } catch (err) {
-                toast.error("상품 정보 불러오기 실패:", err);
+                toast.error("商品情報の読み込み失敗:", err);
             }
         };
         fetchProduct();
@@ -52,20 +52,20 @@ const EditProductPage = () => {
                 ...product,
                 writer: userData.id,
             });
-            toast.success("상품이 수정되었습니다.");
+            toast.success("商品が修正されました。");
             setTimeout(() => {
                 navigate("/user/myproducts");
             }, 2000);
         } catch (err) {
-            console.error("수정 실패:", err);
-            toast.error("수정 중 오류 발생");
+            console.error("修正失敗:", err);
+            toast.error("修正中にエラーが発生");
         }
     };
 
     if (!product || !product.images) {
         return (
             <p className="text-center mt-10">
-                상품 정보를 불러오는 중입니다...
+                商品情報を読み込んでいます···
             </p>
         );
     }
@@ -73,7 +73,7 @@ const EditProductPage = () => {
     return (
         <section>
             <div className="text-center m-7">
-                <h1>상품 수정</h1>
+                <h1>商品修正</h1>
             </div>
             <form onSubmit={handleSubmit} className="mt-6">
                 <FileUpload
@@ -81,7 +81,7 @@ const EditProductPage = () => {
                     onImageChange={handleImages}
                 />
                 <div className="mt-4">
-                    <label htmlFor="title">상품명</label>
+                    <label htmlFor="title">商品名</label>
                     <input
                         className="w-full px-4 py-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00C4C4] focus:border-[#00C4C4]"
                         name="title"
@@ -91,7 +91,7 @@ const EditProductPage = () => {
                     />
                 </div>
                 <div className="mt-4">
-                    <label htmlFor="price">가격</label>
+                    <label htmlFor="price">いくら</label>
                     <input
                         className="w-full px-4 py-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00C4C4] focus:border-[#00C4C4]"
                         type="number"
@@ -102,7 +102,7 @@ const EditProductPage = () => {
                     />
                 </div>
                 <div className="mt-4">
-                    <label htmlFor="category">카테고리</label>
+                    <label htmlFor="category">カテゴリー</label>
                     <select
                         className="w-full px-4 py-2 mt-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00C4C4] focus:border-[#00C4C4]"
                         name="category"
@@ -118,7 +118,7 @@ const EditProductPage = () => {
                     </select>
                 </div>
                 <div className="mt-4">
-                    <label htmlFor="description">상품 설명</label>
+                    <label htmlFor="description">商品情報</label>
                     <textarea
                         name="description"
                         id="description"
@@ -133,7 +133,7 @@ const EditProductPage = () => {
                         type="submit"
                         className="w-full px-4 py-2 text-[#00C4C4] border border-[#00C4C4] bg-white rounded-md hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                     >
-                        수정하기
+                        修正
                     </button>
                 </div>
             </form>
