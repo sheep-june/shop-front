@@ -47,9 +47,9 @@ const DetailProductPage = () => {
         if (!comment || rating === 0) {
             await Swal.fire({
                 icon: "warning",
-                title: "입력값이 부족합니다",
-                text: "별점과 내용을 모두 입력해주세요.",
-                confirmButtonText: "확인",
+                title: "入力値が不足しています",
+                text: "星の数と内容の両方を入力してください。",
+                confirmButtonText: "確認",
                 customClass: {
                     confirmButton: "tw-swal-cancel",
                 },
@@ -65,7 +65,7 @@ const DetailProductPage = () => {
                 rating,
             });
 
-            toast.success("리뷰가 등록되었습니다.");
+            toast.success("レビューが登録されました。");
             setComment("");
             setRating(0);
 
@@ -80,10 +80,10 @@ const DetailProductPage = () => {
             //     toast.error("리뷰 등록에 실패했습니다.");
             // }
             Swal.fire({
-                title: "리뷰 작성 불가",
-                text: "구매하신 상품에만 리뷰를 작성할 수 있습니다.",
+                title: "レビュー作成不可",
+                text: "購入した商品にのみレビューを作成できます。",
                 icon: "error",
-                confirmButtonText: "확인",
+                confirmButtonText: "確認",
                 showCancelButton: false,
                 buttonsStyling: false,
                 customClass: {
@@ -114,7 +114,7 @@ const DetailProductPage = () => {
 
             {/* 아래로 분리된 긴 설명 영역 */}
             <div className="mt-8">
-                <h2 className="text-xl font-semibold mb-2">상품 설명</h2>
+                <h2 className="text-xl font-semibold mb-2">商品説明</h2>
                 <p className="text-gray-700 whitespace-pre-wrap leading-relaxed">
                     {product.description}
                 </p>
@@ -123,11 +123,11 @@ const DetailProductPage = () => {
             {/* 리뷰 평균 + 목록 */}
             <div className="mt-10">
                 <h2 className="text-xl font-bold mb-2">
-                    리뷰 {averageRating.toFixed(1)} / 5
+                    レビュー {averageRating.toFixed(1)} / 5
                 </h2>
 
                 {reviews.length === 0 ? (
-                    <p className="text-gray-500">등록된 리뷰가 없습니다.</p>
+                    <p className="text-gray-500">登録済みのレビューはありません。</p>
                 ) : (
                     <ul className="space-y-3">
                         {reviews.map((review) => (
@@ -153,7 +153,7 @@ const DetailProductPage = () => {
                     onSubmit={handleSubmitReview}
                     className="mt-6 p-4 border rounded"
                 >
-                    <h3 className="text-lg font-semibold mb-2">리뷰 작성</h3>
+                    <h3 className="text-lg font-semibold mb-2">レビュー作成</h3>
 
                     <div className="flex items-center mb-2">
                         {[1, 2, 3, 4, 5].map((i) => (
@@ -172,7 +172,7 @@ const DetailProductPage = () => {
                     <textarea
                         className="w-full border p-2 rounded mb-2"
                         rows="4"
-                        placeholder="리뷰 내용을 입력해주세요."
+                        placeholder="レビュー内容を入力してください。"
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}
                     ></textarea>
@@ -180,7 +180,7 @@ const DetailProductPage = () => {
                         type="submit"
                         className="px-4 py-2 border border-[#00C4C4] text-[#00C4C4] bg-white rounded hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                     >
-                        등록하기
+                        登録
                     </button>
                 </form>
             )}

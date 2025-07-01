@@ -34,29 +34,29 @@ const ProductInfo = ({ product }) => {
             const res = await axiosInstance.post("/users/wishlist", {
                 productId: product._id,
             });
-            toast.success("찜 목록에 추가되었습니다.");
+            toast.success("蒸し物リストに追加されました。");
         } catch (error) {
             if (error.response?.data?.message) {
                 toast.error(error.response.data.message);
             } else {
-                toast.error("찜하기에 실패했습니다.");
+                toast.error("お気に入りに失敗しました。");
             }
         }
     };
 
     return (
         <div>
-            <p className="text-xl text-bold">상품 정보</p>
+            <p className="text-xl text-bold">商品情報</p>
             <ul>
                 <li>
-                    <span className="font-semibold text-gray-900">가격:</span>{" "}
-                    {product.price.toLocaleString()} 원
+                    <span className="font-semibold text-gray-900">いくら:</span>{" "}
+                    {product.price.toLocaleString()} 円
                 </li>
                 <li>
                     <span className="font-semibold text-gray-900">
-                        팔린 개수:
+                        売られた個数:
                     </span>{" "}
-                    {product.sold} 개
+                    {product.sold} 個
                 </li>
             </ul>
             <div className="mt-3 flex space-x-2">
@@ -64,13 +64,13 @@ const ProductInfo = ({ product }) => {
                     onClick={handleCartClick}
                     className="w-1/2 px-4 py-2 border border-[#00C4C4] text-[#00C4C4] bg-white rounded-md hover:bg-[#00C4C4] hover:text-white transition-colors duration-200"
                 >
-                    장바구니로
+                    買い物かごで
                 </button>
                 <button
                     onClick={handleWishlistClick}
                     className="w-1/2 px-4 py-2 border border-pink-500 text-pink-500 bg-white rounded-md hover:bg-pink-500 hover:text-white transition-colors duration-200"
                 >
-                    찜하기
+                    蒸すこと
                 </button>
             </div>
         </div>
