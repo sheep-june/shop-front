@@ -91,7 +91,7 @@ const EditProductPage = () => {
                     />
                 </div>
                 <div className="mt-4">
-                    <label htmlFor="price">いくら</label>
+                    <label htmlFor="price">価格</label>
                     <input
                         className="w-full px-4 py-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00C4C4] focus:border-[#00C4C4]"
                         type="number"

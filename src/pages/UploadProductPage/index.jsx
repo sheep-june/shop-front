@@ -40,7 +40,7 @@ const continents = [
 ];
 
 const UploadProductPage = () => {
-    usePageTitle("상품업로드를 해주세요!");
+    usePageTitle("商品をアップロードしてください！");
     const [product, setProduct] = useState({
         title: "",
         description: "",
@@ -88,18 +88,18 @@ const UploadProductPage = () => {
 
         try {
             await axiosInstance.post("/products", body);
-            toast.success("상품 업로드에 성공했습니다.");
+            toast.success("商品のアップロードに成功しました。");
             navigate("/");
         } catch (error) {
             console.error(error);
-            toast.error("상품 업로드에 실패했습니다. 다시 시도해 주세요.");
+            toast.error("商品のアップロードに失敗しました。");
         }
     };
 
     return (
         <section>
             <div className="text-center m-7">
-                <h1>상품 업로드</h1>
+                <h1>商品アップロード</h1>
             </div>
 
             <form
@@ -117,7 +117,7 @@ const UploadProductPage = () => {
                 />
 
                 <div className="mt-4">
-                    <label htmlFor="title">상품명</label>
+                    <label htmlFor="title">商品名</label>
                     <input
                         className="w-full px-4 py-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00C4C4] focus:border-[#00C4C4]"
                         name="title"
@@ -127,7 +127,7 @@ const UploadProductPage = () => {
                     />
                 </div>
                 <div className="mt-4">
-                    <label htmlFor="price">가격</label>
+                    <label htmlFor="price">価格</label>
                     <input
                         className="w-full px-4 py-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00C4C4] focus:border-[#00C4C4]"
                         type="number"
@@ -138,7 +138,7 @@ const UploadProductPage = () => {
                     />
                 </div>
                 <div className="mt-4">
-                    <label htmlFor="continents">카테고리</label>
+                    <label htmlFor="continents">カテゴリー</label>
                     <select
                         className="w-full px-4 py-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00C4C4] focus:border-[#00C4C4]"
                         name="continents"
@@ -154,13 +154,13 @@ const UploadProductPage = () => {
                     </select>
                 </div>
                 <div className="mt-4">
-                    <label htmlFor="description">상품 설명</label>
+                    <label htmlFor="description">商品説明</label>
                     <textarea
                         id="description"
                         name="description"
                         className="w-full px-4 py-2 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00C4C4] focus:border-[#00C4C4]"
                         rows={10}
-                        placeholder="상품에 대한 설명을 입력하세요"
+                        placeholder="商品の説明を入力してください。"
                         onChange={handleChange}
                         value={product.description}
                     />
@@ -171,7 +171,7 @@ const UploadProductPage = () => {
                         type="submit"
                         className="w-full px-4 py-2 text-[#00C4C4] border border-[#00C4C4] bg-white rounded-md hover:bg-[#00C4C4] hover:text-white transition"
                     >
-                        생성하기
+                        アップロード
                     </button>
                 </div>
             </form>
