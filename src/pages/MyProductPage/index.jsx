@@ -102,7 +102,7 @@ const MyProductsPage = () => {
                                     {product.title}
                                 </h3>
                                 <p className="text-sm text-gray-700 mb-1">
-                                    ₩{product.price.toLocaleString()}
+                                    ￥{product.price.toLocaleString()}
                                 </p>
                                 <p className="text-sm text-gray-500">
                                     登録日:{" "}
