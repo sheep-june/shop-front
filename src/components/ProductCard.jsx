@@ -46,7 +46,7 @@ const ProductCard = ({ product, refreshWishlist }) => {
             <div className="p-4">
                 <h3 className="text-lg font-semibold mb-1">{product.title}</h3>
                 <p className="text-sm text-gray-700 mb-1">
-                    ₩{product.price.toLocaleString()}
+                    ￥{product.price.toLocaleString()}
                 </p>
                 <Link
                     to={`/product/${product._id}`}
