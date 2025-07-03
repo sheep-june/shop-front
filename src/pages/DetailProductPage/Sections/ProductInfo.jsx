@@ -34,7 +34,7 @@ const ProductInfo = ({ product }) => {
             const res = await axiosInstance.post("/users/wishlist", {
                 productId: product._id,
             });
-            toast.success("蒸し物リストに追加されました。");
+            toast.success("お気に入りリストに追加されました。");
         } catch (error) {
             if (error.response?.data?.message) {
                 toast.error(error.response.data.message);
