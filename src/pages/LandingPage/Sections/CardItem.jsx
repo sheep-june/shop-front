@@ -4,10 +4,11 @@ import ImageSlider from "../../../components/ImageSlider";
 import { FaHeart, FaRegHeart, FaStar } from "react-icons/fa";
 import axiosInstance, { setCsrfToken } from "../../../utils/axios";
 import { useSelector } from "react-redux";
+import Swal from 'sweetalert2';
+
+
 
 const serverUrl = import.meta.env.VITE_SERVER_URL;
-import { Swal } from 'sweetalert2';
-
 const CardItem = ({ product, refreshWishlist, wishlist }) => {
     const user = useSelector((state) => state.user);
     const navigate = useNavigate();
