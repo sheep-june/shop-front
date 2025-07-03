@@ -54,10 +54,14 @@ const CardItem = ({ product, refreshWishlist, wishlist }) => {
             Swal.fire({
     text: msg,
     icon: "info",
-    confirmButtonText: "確認",  // 일본어 확인 버튼
-    confirmButtonColor: "#00C4C4",  // 민트색 버튼
-    showCancelButton: false,
+    confirmButtonText: "確認",
+    customClass: {
+        confirmButton:
+            "border-2 border-[#00C4C4] text-[#00C4C4] font-bold px-5 py-2 rounded hover:bg-[#00C4C4] hover:text-white transition",
+    },
+    buttonsStyling: false,
 });
+
         }
     };
 
