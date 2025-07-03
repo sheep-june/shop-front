@@ -99,7 +99,6 @@ const WishlistPage = () => {
                                     onChange={() => handleCheck(product._id)}
                                 />
                                 <img
-                                    // src={`http://localhost:4000/uploads/${product.images[0]}`}
                                     src={`${import.meta.env.VITE_SERVER_URL}/uploads/${product.images[0]}`}
                                     alt={product.title}
                                     className="w-full h-48 object-cover rounded-t"
