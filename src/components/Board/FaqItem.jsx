@@ -2,6 +2,10 @@ import { useState } from "react";
 import axios from "../../utils/axios";
 import { toast } from "react-toastify";
 import { useConfirmAlert } from "../../hooks/useConfirmAlert";
+import dayjs from "dayjs";
+import "dayjs/locale/ja";
+
+dayjs.locale("ja");
 
 const getCookie = (name) => {
     const value = `; ${document.cookie}`;
@@ -16,6 +20,7 @@ const FaqItem = ({ faq, onUpdate }) => {
         title: faq.title,
         content: faq.content,
     });
+
 
     const isAdmin = !!localStorage.getItem("adminToken");
     const token = localStorage.getItem("adminToken");
@@ -135,8 +140,9 @@ const FaqItem = ({ faq, onUpdate }) => {
                         <>
                             <p className="whitespace-pre-line">{faq.content}</p>
                             <p className="mt-2 text-xs text-right text-gray-400">
-                                作成者: {faq.admin?.name || "管理者"} /{" "}
-                                {new Date(faq.createdAt).toLocaleString()}
+                                {`作成者: ${faq.admin?.name || "管理者"} / ${dayjs(
+                  faq.createdAt
+                ).format("YYYY年MM月DD日 HH時mm分ss秒")}`}
                             </p>
 
                             {isAdmin && (
