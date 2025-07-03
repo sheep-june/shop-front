@@ -12,7 +12,7 @@ const ProductInfo = ({ product }) => {
 
     const handleCartClick = () => {
         if (!user.isAuth) {
-            toast.warn("로그인이 필요합니다.");
+            toast.warn("ログインしてください");
             setTimeout(() => {
                 navigate("/auth");
             }, 2000); // 1초 정도 후 이동
@@ -23,7 +23,7 @@ const ProductInfo = ({ product }) => {
 
     const handleWishlistClick = async () => {
         if (!user.isAuth) {
-            toast.warn("로그인이 필요합니다.");
+            toast.warn("ログインしてください");
             setTimeout(() => {
                 navigate("/auth");
             }, 2000);

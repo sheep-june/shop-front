@@ -6,6 +6,7 @@ import axiosInstance, { setCsrfToken } from "../../../utils/axios";
 import { useSelector } from "react-redux";
 
 const serverUrl = import.meta.env.VITE_SERVER_URL;
+import { Swal } from 'sweetalert2';
 
 const CardItem = ({ product, refreshWishlist, wishlist }) => {
     const user = useSelector((state) => state.user);
@@ -49,7 +50,13 @@ const CardItem = ({ product, refreshWishlist, wishlist }) => {
             if (msg === "すでにお気に入りの商品です。") {
                 setWished(true);
             }
-            alert(msg);
+            Swal.fire({
+    text: msg,
+    icon: "info",
+    confirmButtonText: "確認",  // 일본어 확인 버튼
+    confirmButtonColor: "#00C4C4",  // 민트색 버튼
+    showCancelButton: false,
+});
         }
     };
 
