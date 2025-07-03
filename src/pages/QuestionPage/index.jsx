@@ -44,7 +44,7 @@ const QuestionPage = () => {
 
     return (
         <div className="p-6 max-w-4xl mx-auto">
-            <h2 className="text-xl font-bold mb-4 border-b pb-2">질문게시판</h2>
+            <h2 className="text-xl font-bold mb-4 border-b pb-2">質問掲示板</h2>
 
             {/* ✅ 일반 유저(0)만 작성 가능 */}
             {user?.role === 0 && (
