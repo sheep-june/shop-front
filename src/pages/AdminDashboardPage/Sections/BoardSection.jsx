@@ -87,7 +87,15 @@ const BoardSection = () => {
                             </p>
                             <p className="text-xs text-gray-400 mt-2">
                                 作成者: {q.user?.name || "ユーザー"} /{" "}
-                                {new Date(q.createdAt).toLocaleString()}
+                                { new Date(q.comment.createdAt).toLocaleString("ja-JP", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+}) }
                             </p>
 
                             {q.comment ? (
