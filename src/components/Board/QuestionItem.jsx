@@ -1,5 +1,11 @@
 import { useState } from "react";
 import CommentBox from "./CommentBox";
+import dayjs from "dayjs";
+import "dayjs/locale/ja";
+
+// 전역 로케일을 일본어로 설정
+dayjs.locale("ja");
+
 
 const QuestionItem = ({ question, isAdmin, refresh }) => {
     const [showCommentForm, setShowCommentForm] = useState(false);
@@ -29,7 +35,9 @@ const QuestionItem = ({ question, isAdmin, refresh }) => {
                     </p>
                     <p className="text-xs text-gray-400 mt-2 text-right">
                         作成者: {question.comment.admin?.name || "管理者"} /{" "}
-                        {new Date(question.comment.createdAt).toLocaleString()}
+                        {dayjs(question.createdAt).format(
+            "YYYY年MM月DD日 HH時mm分ss秒"
+          )}
                     </p>
                 </div>
             ) : isAdmin ? (
